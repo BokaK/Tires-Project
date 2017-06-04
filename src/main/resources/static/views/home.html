@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Гуми</title>
+</head>
+<body>
+<div class="container">
+    <h1>Гуми</h1>
+    <br/>
+    <form ng-submit="vm.save()">
+        <div class="form-group">
+            <label>Ширина</label>
+            <input class="form-control"
+                   type="number"
+                   ng-required="true"
+                   ng-model="vm.entity.width">
+        </div>
+        <div class="form-group">
+            <label>Висина</label>
+            <input class="form-control"
+                   type="number"
+                   ng-required="true"
+                   ng-model="vm.entity.height">
+        </div>
+        <div class="form-group">
+            <label>Инчи</label>
+            <input class="form-control"
+                   type="number"
+                   ng-required="true"
+                   ng-model="vm.entity.inches">
+        </div>
+        <div class="form-group">
+            <label>Цена</label>
+            <input class="form-control"
+                   type="number"
+                   ng-required="true"
+                   ng-model="vm.entity.price">
+        </div>
+        <div class="form-group">
+            <label>Дали е на попуст?</label>
+            <input type="checkbox"
+                   ng-model="vm.entity.onSale"
+                   onclick="var input = document.getElementById('name2');
+                   if(this.checked){ input.disabled = false; input.focus();}
+                   else{input.disabled=true;}"
+            />
+        </div>
+        <div class="form-group">
+            <label>Цена со попуст</label>
+            <input class="form-control"
+                   type="number"
+                   id="name2"
+                   name="name2"
+                   disabled="disabled"
+                   ng-required="true"
+                   ng-model="vm.entity.priceOnSale">
+        </div>
+        <br/>
+        <div class="form-group">
+            <label>Компании</label>
+            <div ng-repeat="e in vm.possibleBrands">
+            <input ng-model='vm.entity.brandName'
+                   type="radio"
+                   ng-value={{e}}>{{e.brandName}}</input>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label>Тип</label>
+            <div ng-repeat="e in vm.seasonTypes">
+                <input ng-model='vm.entity.seasonType'
+                       type="radio"
+                       ng-value={{e}}>{{e.seasonType}}</input>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label>Тип на возило</label>
+            <div ng-repeat="e in vm.vehicleTypes">
+                <input ng-model='vm.entity.vehicleType'
+                       type="radio"
+                       ng-value={{e}}>{{e.vehicleType}}</input>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label>Дали има на залиха?</label>
+            <input type="checkbox"
+                   ng-model="vm.entity.onStock"
+                   onclick="var input = document.getElementById('name1');
+                   if(this.checked){ input.disabled = false; input.focus();}
+                   else{input.disabled=true;}"
+            />
+        </div>
+        <div class="form-group">
+            <label>Број на залиха</label>
+            <input class="form-control"
+                   type="number"
+                   id="name1"
+                   name="name1"
+                   disabled="disabled"
+                   ng-required="true"
+                   ng-model="vm.entity.stockNumber">
+        </div>
+        <br/>
+        <div class="form-group">
+            <label>Слика</label>
+            <input type="file" name="file" ng-model="document.fileInput" id="file" title="Zdravo"/>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Внеси">
+    </form>
+
+    <br/>
+
+    <table ng-show="vm.entities.length>0" class="table table-bordered table-striped">
+        <tr>
+            <th>Ширина</th>
+            <th>Висина</th>
+            <th>Инчи</th>
+            <th>Цена</th>
+            <th>Дали е на попуст?</th>
+            <th>Цена со попуст</th>
+            <th>Компанија</th>
+            <th>Тип</th>
+            <th>Тип на возило</th>
+            <th>Дали има на залиха?</th>
+            <th>Број на залиха</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="e in vm.entities">
+            <td>{{e.width}}</td>
+            <td>{{e.height}}</td>
+            <td>{{e.inches}}</td>
+            <td>{{e.price}}</td>
+            <td>{{e.onSale}}</td>
+            <td>{{e.priceOnSale}}</td>
+            <td>{{e.brandName.brandName}}</td>
+            <td>{{e.seasonType.seasonType}}</td>
+            <td>{{e.vehicleType.vehicleType}}</td>
+            <td>{{e.onStock}}</td>
+            <td>{{e.stockNumber}}</td>
+            <td>
+                <button class="btn btn-xs btn-default"
+                        ng-click="vm.edit(e)">
+                    Измени
+                </button>
+                <button class="btn btn-xs btn-danger"
+                        ng-click="vm.remove(e)">
+                    Отстрани
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

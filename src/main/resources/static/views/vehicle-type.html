@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тип</title>
+</head>
+<body>
+<div class="container">
+    <h1>Тип на возила</h1>
+    <br/>
+    <form ng-submit="vm4.save()">
+        <div class="form-group">
+            <label>Тип на возила</label>
+            <input class="form-control"
+                   type="text"
+                   ng-required="true"
+                   ng-model="vm4.entity.vehicleType">
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Внеси">
+    </form>
+
+    <br/>
+
+    <table ng-show="vm4.entities.length>0" class="table table-bordered table-striped">
+        <tr>
+            <th>Тип</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="e in vm4.entities">
+            <td>{{e.vehicleType}}</td>
+            <td>
+                <button class="btn btn-xs btn-default"
+                        ng-click="vm4.edit(e)">
+                    Измени
+                </button>
+                <button class="btn btn-xs btn-danger"
+                        ng-click="vm4.remove(e)">
+                    Отстрани
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
