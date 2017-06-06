@@ -10,6 +10,20 @@
     <br/>
     <form ng-submit="vm.save()">
         <div class="form-group">
+            <label>Име</label>
+            <input class="form-control"
+                   type="text"
+                   ng-required="true"
+                   ng-model="vm.entity.name">
+        </div>
+        <div class="form-group">
+            <label>Опис</label>
+            <input class="form-control"
+                   type="text"
+                   ng-required="true"
+                   ng-model="vm.entity.description">
+        </div>
+        <div class="form-group">
             <label>Ширина</label>
             <input class="form-control"
                    type="number"
@@ -60,9 +74,9 @@
         <div class="form-group">
             <label>Компании</label>
             <div ng-repeat="e in vm.possibleBrands">
-            <input ng-model='vm.entity.brandName'
-                   type="radio"
-                   ng-value={{e}}>{{e.brandName}}</input>
+                <input ng-model='vm.entity.brandName'
+                       type="radio"
+                       ng-value={{e}}>{{e.brandName}}</input>
             </div>
 
         </div>
@@ -72,15 +86,6 @@
                 <input ng-model='vm.entity.seasonType'
                        type="radio"
                        ng-value={{e}}>{{e.seasonType}}</input>
-            </div>
-
-        </div>
-        <div class="form-group">
-            <label>Тип на возило</label>
-            <div ng-repeat="e in vm.vehicleTypes">
-                <input ng-model='vm.entity.vehicleType'
-                       type="radio"
-                       ng-value={{e}}>{{e.vehicleType}}</input>
             </div>
 
         </div>
@@ -106,7 +111,7 @@
         <br/>
         <div class="form-group">
             <label>Слика</label>
-            <input type="file" name="file" ng-model="document.fileInput" id="file" title="Zdravo"/>
+            <input type="file" name="file" ng-model="document.fileInput" id="file" />
         </div>
         <input class="btn btn-primary" type="submit" value="Внеси">
     </form>
@@ -115,6 +120,8 @@
 
     <table ng-show="vm.entities.length>0" class="table table-bordered table-striped">
         <tr>
+            <th>Име</th>
+            <th>Опис</th>
             <th>Ширина</th>
             <th>Висина</th>
             <th>Инчи</th>
@@ -123,12 +130,14 @@
             <th>Цена со попуст</th>
             <th>Компанија</th>
             <th>Тип</th>
-            <th>Тип на возило</th>
             <th>Дали има на залиха?</th>
             <th>Број на залиха</th>
+            <th>Слика</th>
             <th></th>
         </tr>
         <tr ng-repeat="e in vm.entities">
+            <td>{{e.name}}</td>
+            <td>{{e.description}}</td>
             <td>{{e.width}}</td>
             <td>{{e.height}}</td>
             <td>{{e.inches}}</td>
@@ -137,9 +146,9 @@
             <td>{{e.priceOnSale}}</td>
             <td>{{e.brandName.brandName}}</td>
             <td>{{e.seasonType.seasonType}}</td>
-            <td>{{e.vehicleType.vehicleType}}</td>
             <td>{{e.onStock}}</td>
             <td>{{e.stockNumber}}</td>
+            <td>{{e.imageUrl}}</td>
             <td>
                 <button class="btn btn-xs btn-default"
                         ng-click="vm.edit(e)">

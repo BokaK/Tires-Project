@@ -9,6 +9,10 @@ import javax.persistence.*;
 @Table(name="tire")
 public class Tire extends BaseEntity{
 
+    private String name;
+
+    private String description;
+
     private double width;
 
     private double height;
@@ -123,5 +127,21 @@ public class Tire extends BaseEntity{
 
     public void setVehicleType(VehicleType vehicleType) {
         this.vehicleType = vehicleType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

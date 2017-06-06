@@ -51,7 +51,7 @@ function TireControllerFn(tireService, tireImageService, $http, brandService, se
         }
         if (vm.entity.onStock == false)
         {
-            vm.entity.priceOnSale = 0;
+            vm.entity.stockNumber = 0;
         }
         var promise = tireService.save(vm.entity);
         promise.then(successCallback, errorCallback);
