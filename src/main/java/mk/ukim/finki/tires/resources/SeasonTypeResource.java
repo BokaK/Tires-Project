@@ -30,7 +30,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/seasonType", produces = "application/json")
+@RequestMapping(value = "/admin/seasonType", produces = "application/json")
 public class SeasonTypeResource implements ApplicationContextAware {
 
         public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

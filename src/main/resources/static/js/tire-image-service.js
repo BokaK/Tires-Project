@@ -8,7 +8,7 @@ TireImageServiceFn.$inject = ['$http', '$q'];
 /* @ngInject */
 function TireImageServiceFn($http, $q) {
 
-    var URL = 'http://localhost:7770/tireImage/';
+    var URL = 'http://localhost:7770/admin/tireImage/';
 
     var service = {
         save: saveFn,

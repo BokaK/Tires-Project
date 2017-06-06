@@ -8,7 +8,7 @@ SeasonTypeServiceFn.$inject = ['$http', '$q'];
 /* @ngInject */
 function SeasonTypeServiceFn($http, $q) {
 
-    var URL = 'http://localhost:7770/seasonType/';
+    var URL = 'http://localhost:7770/admin/seasonType/';
 
     var service = {
         save: saveFn,

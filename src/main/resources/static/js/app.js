@@ -5,28 +5,28 @@
 var app = angular.module('app', ['ngRoute','ngResource']);
 app.config(function($routeProvider){
     $routeProvider
-        .when('/tires',{
+        .when('/admin/tires',{
             templateUrl: '/views/home.html',
             controller: 'tireController',
             controllerAs: 'vm'
         })
-        .when('/login',{
+        .when('/admin/login',{
             templateUrl:'/views/login.html',
             controller:'loginController',
             controllerAs:'vm1'
         })
-        .when('/brand',{
+        .when('/admin/brand',{
             templateUrl:'views/brand.html',
             controller:'brandController',
             controllerAs:'vm2'
         })
-        .when('/seasonType',
+        .when('/admin/seasonType',
             {
                 templateUrl:'views/season-type.html',
                 controller:'seasonTypeController',
                 controllerAs:'vm3'
             })
-        .when('/vehicleType',
+        .when('/admin/vehicleType',
             {
                 templateUrl:'views/vehicle-type.html',
                 controller:'vehicleTypeController',

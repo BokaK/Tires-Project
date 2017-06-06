@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping(value = "/brand", produces = "application/json")
+@RequestMapping(value = "/admin/brand", produces = "application/json")
 public class BrandResource implements ApplicationContextAware {
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

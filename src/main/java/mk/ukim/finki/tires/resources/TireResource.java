@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping(value = "/tires", produces = "application/json")
+@RequestMapping(value = "/admin/tires", produces = "application/json")
 public class TireResource implements ApplicationContextAware {
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

@@ -19,7 +19,7 @@ import java.util.List;
  * Created by user on 02.6.2017.
  */
 @RestController
-@RequestMapping(value = "/tireImage", produces = "application/json")
+@RequestMapping(value = "/admin/tireImage", produces = "application/json")
 public class TireImageResource implements ApplicationContextAware{
 
     public final TireImageService tireImageService;

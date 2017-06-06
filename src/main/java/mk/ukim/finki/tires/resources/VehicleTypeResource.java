@@ -16,7 +16,7 @@ import java.util.List;
  * Created by user on 04.6.2017.
  */
 @RestController
-@RequestMapping(value = "/vehicleType", produces = "application/json")
+@RequestMapping(value = "/admin/vehicleType", produces = "application/json")
 public class VehicleTypeResource implements ApplicationContextAware {
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
