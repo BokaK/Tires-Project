@@ -6,7 +6,7 @@
 	<groupId>mk.ukim.finki.tires</groupId>
 	<artifactId>Tire-Project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>Tires</name>
 	<description>Tires</description>
