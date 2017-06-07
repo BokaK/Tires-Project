@@ -132,7 +132,6 @@
             <th>Тип</th>
             <th>Дали има на залиха?</th>
             <th>Број на залиха</th>
-            <th>Слика</th>
             <th></th>
         </tr>
         <tr ng-repeat="e in vm.entities">
@@ -148,7 +147,6 @@
             <td>{{e.seasonType.seasonType}}</td>
             <td>{{e.onStock}}</td>
             <td>{{e.stockNumber}}</td>
-            <td>{{e.imageUrl}}</td>
             <td>
                 <button class="btn btn-xs btn-default"
                         ng-click="vm.edit(e)">
