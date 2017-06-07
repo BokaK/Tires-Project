@@ -8,7 +8,7 @@ BrandServiceFn.$inject = ['$http', '$q'];
 /* @ngInject */
 function BrandServiceFn($http, $q) {
 
-    var URL = 'http://localhost:7770/admin/brand/';
+    var URL = '/admin/brand/';
 
     var service = {
         save: saveFn,

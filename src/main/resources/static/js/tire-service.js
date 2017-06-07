@@ -5,7 +5,7 @@ TireServiceFn.$inject = ['$http', '$q'];
 /* @ngInject */
 function TireServiceFn($http, $q) {
 
-    var URL = 'http://localhost:7770/admin/tires/';
+    var URL = '/admin/tires/';
 
     var service = {
         save: saveFn,

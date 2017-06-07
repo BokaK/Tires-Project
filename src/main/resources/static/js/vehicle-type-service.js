@@ -8,7 +8,7 @@ VehicleTypeServiceFn.$inject = ['$http', '$q'];
 /* @ngInject */
 function VehicleTypeServiceFn($http, $q) {
 
-    var URL = 'http://localhost:7770/admin/vehicleType/';
+    var URL = '/admin/vehicleType/';
 
     var service = {
         save: saveFn,
