@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Компанија</title>
+</head>
+<body>
+<div class="container">
+    <h1>Компанија</h1>
+    <br/>
+    <form ng-submit="vm2.save()">
+        <div class="form-group">
+            <label>Име</label>
+            <input class="form-control"
+                   type="text"
+                   ng-required="true"
+                   ng-model="vm2.entity.brandName">
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Внеси">
+    </form>
+
+    <br/>
+
+    <table ng-show="vm2.entities.length>0" class="table table-bordered table-striped">
+        <tr>
+            <th>Име</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="e in vm2.entities">
+            <td>{{e.brandName}}</td>
+            <td>
+                <button class="btn btn-xs btn-default"
+                        ng-click="vm2.edit(e)">
+                    Измени
+                </button>
+                <button class="btn btn-xs btn-danger"
+                        ng-click="vm2.remove(e)">
+                    Отстрани
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
