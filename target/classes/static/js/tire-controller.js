@@ -64,7 +64,7 @@ function TireControllerFn(tireService, tireImageService, $http, brandService, se
                 formData.append("tire", object.data.id);
                 $http({
                     method: 'POST',
-                    url:  'http://localhost:7770/tireImage/',
+                    url:  '/admin/tireImage/',
                     headers: { 'Content-Type': undefined},
                     data:  formData
                 }).success(function(data, status) {

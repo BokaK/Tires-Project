@@ -18,7 +18,7 @@ import java.util.UUID;
 @Service
 public class TireImageServiceImpl implements TireImageService {
 
-    private static final String URL_PATTERN="C:\\Users\\user\\Desktop\\tires-project-images\\";
+    private static final String URL_PATTERN="/images/";
 
     public final TireImageRepository tireImageRepository;
 
