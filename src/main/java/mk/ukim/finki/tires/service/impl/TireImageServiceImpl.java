@@ -69,7 +69,7 @@ public class TireImageServiceImpl implements TireImageService {
 
         try{
             if (!new File(URL_PATTERN). exists()) {
-                new File(URL_PATTERN).mkdir( );
+                new File(URL_PATTERN).mkdirs( );
             }
 
             String orgName = file.getOriginalFilename();
@@ -90,6 +90,11 @@ public class TireImageServiceImpl implements TireImageService {
         }
 
         return destLocation;
+    }
+
+    @Override
+    public TireImage getByTireId(Long id) {
+        return tireImageRepository.findByTireId(id);
     }
 
 }

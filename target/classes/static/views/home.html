@@ -105,7 +105,6 @@
                    id="name1"
                    name="name1"
                    disabled="disabled"
-                   ng-required="true"
                    ng-model="vm.entity.stockNumber">
         </div>
         <br/>
@@ -148,7 +147,7 @@
             <td>{{e.seasonType.seasonType}}</td>
             <td>{{e.onStock}}</td>
             <td>{{e.stockNumber}}</td>
-            <td>{{e.imageUrl.imageUrl}}</td>
+            <td><img ng-src="/admin/tireImage/tire/{{e.id}}" style="height: 50px;width:50px"></td>
             <td>
                 <button class="btn btn-xs btn-default"
                         ng-click="vm.edit(e)">
