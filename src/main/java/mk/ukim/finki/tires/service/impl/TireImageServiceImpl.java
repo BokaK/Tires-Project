@@ -5,6 +5,7 @@ import mk.ukim.finki.tires.models.jpa.TireImage;
 import mk.ukim.finki.tires.persistence.TireImageRepository;
 import mk.ukim.finki.tires.service.TireImageService;
 import mk.ukim.finki.tires.service.TireService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,7 +19,9 @@ import java.util.UUID;
 @Service
 public class TireImageServiceImpl implements TireImageService {
 
-    private static final String URL_PATTERN="/images/";
+
+    @Value("file_upload_resource")
+    private String URL_PATTERN;
 
     public final TireImageRepository tireImageRepository;
 
@@ -69,7 +72,7 @@ public class TireImageServiceImpl implements TireImageService {
 
         try{
             if (!new File(URL_PATTERN). exists()) {
-                new File(URL_PATTERN).mkdir( );
+                new File(URL_PATTERN).mkdirs( );
             }
 
             String orgName = file.getOriginalFilename();
@@ -90,6 +93,11 @@ public class TireImageServiceImpl implements TireImageService {
         }
 
         return destLocation;
+    }
+
+    @Override
+    public TireImage getByTireId(Long id) {
+        return tireImageRepository.findByTireId(id);
     }
 
 }

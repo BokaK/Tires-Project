@@ -15,6 +15,7 @@ function TireControllerFn(tireService, tireImageService, $http, brandService, se
     vm.seasonTypes=[];
     vm.vehicleTypes=[];
 
+
     loadTires();
     loadBrands();
     loadSeasonTypes();

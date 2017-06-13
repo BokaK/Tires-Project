@@ -16,4 +16,6 @@ public interface TireImageService {
     void deleteById(Long id);
 
     String savePicture(MultipartFile file);
+
+    TireImage getByTireId(Long id);
 }
