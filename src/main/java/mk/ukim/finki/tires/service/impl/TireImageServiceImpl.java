@@ -20,8 +20,7 @@ import java.util.UUID;
 public class TireImageServiceImpl implements TireImageService {
 
 
-    @Value("file_upload_resource")
-    private String URL_PATTERN;
+    private String URL_PATTERN = "/opt/tomcat/lib/Tires-Project/images/";
 
     public final TireImageRepository tireImageRepository;
 

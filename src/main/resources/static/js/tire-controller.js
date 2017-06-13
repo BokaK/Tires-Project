@@ -14,7 +14,7 @@ function TireControllerFn(tireService, tireImageService, $http, brandService, se
     vm.possibleBrands=[];
     vm.seasonTypes=[];
     vm.vehicleTypes=[];
-
+    vm.images =[];
 
     loadTires();
     loadBrands();
@@ -42,6 +42,12 @@ function TireControllerFn(tireService, tireImageService, $http, brandService, se
     function loadBrands() {
         brandService.getAll().then(function (data) {
             vm.possibleBrands = data;
+        });
+    }
+
+    function  loadImages() {
+        tireImageService.getAll().then(function (data) {
+           vm.images = data;
         });
     }
 
@@ -76,10 +82,8 @@ function TireControllerFn(tireService, tireImageService, $http, brandService, se
             }
             clear();
             loadTires();
-            loadBrands();
-            loadSeasonTypes();
-            loadVehicleTypes();
         }
+        loadTires();
         function errorCallback(data) {
         }
     }

@@ -1,10 +1,5 @@
 package mk.ukim.finki.tires.resources;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import mk.ukim.finki.tires.models.jpa.Tire;
 import mk.ukim.finki.tires.models.jpa.TireImage;
 import mk.ukim.finki.tires.service.TireImageService;
@@ -106,7 +101,7 @@ public class TireImageResource implements ApplicationContextAware{
 
 
             in.read(fileContent);
-            ByteInputStream bin = new ByteInputStream(fileContent, fileContent.length);
+            ByteArrayInputStream bin = new ByteArrayInputStream(fileContent);
 
             response.setHeader("Content-Disposition", contentDisposition);
             response.setContentType(Files.probeContentType(file.toPath()));
