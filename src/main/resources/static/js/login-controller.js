@@ -6,5 +6,6 @@ app.controller('loginController', LoginControllerFn);
 
 function LoginControllerFn() {
 
-  var vm1 = this;
+  var vm = this;
+  vm.text = "Zdravo";
 }

@@ -5,12 +5,15 @@
 var app = angular.module('app', ['ngRoute','ngResource']);
 app.config(function($routeProvider){
     $routeProvider
+        .when('/admin',{
+            templateUrl:'/admin.html'
+        })
         .when('/admin/tires',{
             templateUrl: '/views/home.html',
             controller: 'tireController',
             controllerAs: 'vm'
         })
-        .when('/admin/login',{
+        .when('/login',{
             templateUrl:'/views/login.html',
             controller:'loginController',
             controllerAs:'vm1'
