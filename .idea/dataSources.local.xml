@@ -7,9 +7,10 @@
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
-      <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
+      <introspection-schemas>*:tires</introspection-schemas>
       <resolve-scope>tires:</resolve-scope>
+      <unqualified-resolve-schemas>tires:</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>

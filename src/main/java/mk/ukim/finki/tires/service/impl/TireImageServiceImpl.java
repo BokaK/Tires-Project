@@ -20,7 +20,7 @@ import java.util.UUID;
 public class TireImageServiceImpl implements TireImageService {
 
 
-    private String URL_PATTERN = "/opt/tomcat/lib/Tires-Project/images/";
+    private String URL_PATTERN = "C:/opt/tomcat/lib/Tires-Project/images/";
 
     public final TireImageRepository tireImageRepository;
 
