@@ -36,13 +36,6 @@ app.config(function($routeProvider){
                 controllerAs:'vm4'
             }
         )
-        .when('/main',
-            {
-                templateUrl:'views/main.html',
-                controller:'mainController',
-                controllerAs:'vm5'
-            }
-        )
         .otherwise({
            redirectTo: '/'
         });
