@@ -36,6 +36,11 @@ app.config(function($routeProvider){
                 controllerAs:'vm4'
             }
         )
+        .when('/index', {
+            templateUrl:'index.html',
+            controller:'mainController',
+            controllerAs:'vm5'
+        })
         .otherwise({
            redirectTo: '/'
         });

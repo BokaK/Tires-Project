@@ -22,7 +22,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
-<body ng-app="app" ng-cloak class="ng-cloak" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body ng-app="app" ng-cloak class="ng-cloak page-top" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
 
 <!-- Navigation -->
@@ -96,16 +96,26 @@
                             </option>
                         </select>
                     </p>
+                    <button id="button-search" class="button button-default btn-lg">
+                        Пребарај!
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </header>
 <!-- Tires -->
-<section id="tires" class="container tire-section text-center">
+<section id="tires" class="container tire-section text-center" ng-controller="mainController as vm5">
     <div class="row">
         <div class="col-lg-8">
-            <h1>Tires</h1>
+            <div class="row" id="div1">
+                <div class="col-lg-12">
+                    <p ng-repeat="e in vm5.entities">
+                    {{e.name}}
+                    </p>
+
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -137,6 +147,10 @@
 <script src="js/app.js"></script>
 
 <script src="js/login-controller.js"></script>
+
+<script src="js/main-controller.js"> </script>
+
+<script src="js/main-service.js"> </script>
 
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
 

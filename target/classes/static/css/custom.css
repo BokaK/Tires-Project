@@ -33,15 +33,16 @@ p {
         font-size: 20px;
         line-height: 1.6;
     }
+
 }
-a {
+#button-search {
     color: #42DCA3;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
-a:hover,
-a:focus {
+#button-search:hover,
+#button-search:focus {
     text-decoration: none;
     color: #1d9b6c;
 }
@@ -112,6 +113,7 @@ a:focus {
     .navbar-custom.top-nav-collapse {
         padding: 0;
         background: black;
+        color: white;
         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 }
@@ -218,7 +220,7 @@ a:focus {
 
 
 
-.btn {
+.button {
     text-transform: uppercase;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -227,13 +229,13 @@ a:focus {
     transition: all 0.3s ease-in-out;
     border-radius: 0;
 }
-.btn-default {
+.button-default {
     border: 1px solid #42DCA3;
     color: #42DCA3;
     background-color: transparent;
 }
-.btn-default:hover,
-.btn-default:focus {
+.button-default:hover,
+.button-default:focus {
     border: 1px solid #42DCA3;
     outline: none;
     color: black;
@@ -281,4 +283,65 @@ body {
 {
     background-color: rgba(1,1,1,0.6);
     color: white;
+    -webkit-animation: move 3s ease;
+    -webkit-transition: all 3s linear;
+}
+
+@-webkit-keyframes move {
+    from {
+        -webkit-transform: translateX(-100%) rotate(-90deg);
+    }
+    to {
+        -webkit-transform: translateX(0%) rotate(0deg);
+    }
+}
+.tire-section {
+    padding-top: 100px;
+    height: 100%;
+    background-color: black;
+}
+.contact-section
+{
+    height: 100%;
+    background-color: black;
+    padding-top: 50px;
+}
+.help-section {
+    height: 100%;
+    padding: 50px 0;
+    color: white;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+#contact, #help, #tires
+{
+    width: 100%;
+}
+@media (min-width: 767px) {
+    .content-section {
+        padding-top: 250px;
+    }
+    .services-section {
+        padding: 100px 0;
+    }
+
+
+}
+#div1
+{
+    height: 500px;
+    overflow: auto;
+}
+@media (max-height: 600px) {
+    .page-top, .contact-section, .help-section, .tire-section
+    {
+        height:100vh;
+    }
+    #div1
+    {
+        height: 60vh;
+    }
 }
