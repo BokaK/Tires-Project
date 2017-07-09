@@ -10,45 +10,56 @@ function MainControllerFn(mainService) {
 
     vm.entity = {};
     vm.entities = [];
-    // vm.possibleBrands=[];
-    // vm.seasonTypes=[];
-    // vm.vehicleTypes=[];
-    // vm.images =[];
+    // All kinds of season type
+    vm.seasonTypes = [];
+    // Selected value from the dropdown list
+    vm.selectedSeasonType = {};
+    vm.brands = [];
+    vm.selectedBrand = {};
+    vm.heights = [];
+    vm.selectedHeight = {};
+    vm.widths = [];
+    vm.selectedWidth = {};
+    vm.inches = [];
+    vm.selectedInches = {};
 
     loadTires();
-    // loadBrands();
-    // loadSeasonTypes();
-    // loadVehicleTypes();
+    loadBrands();
+    loadSeasonTypes();
+    loadWidths();
+    loadHeights();
+    loadInches();
 
     function loadTires() {
-        mainService.getAll().then(function (data) {
+        mainService.getAllTires().then(function (data) {
             vm.entities = data;
         });
     }
-
-    // function loadSeasonTypes() {
-    //     seasonTypeService.getAll().then(function (data) {
-    //         vm.seasonTypes = data;
-    //     });
-    // }
-    //
-    // function loadVehicleTypes() {
-    //     vehicleTypeService.getAll().then(function (data) {
-    //         vm.vehicleTypes = data;
-    //     });
-    // }
-    //
-    // function loadBrands() {
-    //     brandService.getAll().then(function (data) {
-    //         vm.possibleBrands = data;
-    //     });
-    // }
-    //
-    // function  loadImages() {
-    //     tireImageService.getAll().then(function (data) {
-    //         vm.images = data;
-    //     });
-    // }
+    function loadSeasonTypes() {
+        mainService.getAllSeasonTypes().then(function (data) {
+            vm.seasonTypes = data;
+        });
+    }
+    function loadBrands() {
+        mainService.getAllBrands().then(function (data) {
+            vm.brands = data;
+        });
+    }
+    function loadWidths() {
+        mainService.getAllWidths().then(function (data) {
+            vm.widths = data;
+        });
+    }
+    function loadHeights() {
+        mainService.getAllHeights().then(function (data) {
+            vm.heights = data;
+        });
+    }
+    function loadInches() {
+        mainService.getAllInches().then(function (data) {
+            vm.inches = data;
+        });
+    }
 
 
 

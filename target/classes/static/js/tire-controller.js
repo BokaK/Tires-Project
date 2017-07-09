@@ -1,8 +1,8 @@
 app.controller('tireController', TireControllerFn);
 
-TireControllerFn.$inject = ['tireService','tireImageService','$http','brandService', 'seasonTypeService','vehicleTypeService'];
+TireControllerFn.$inject = ['tireService','tireImageService','$http','brandService', 'seasonTypeService','vehicleTypeService', 'widthService', 'heightService', 'inchesService'];
 
-function TireControllerFn(tireService, tireImageService, $http, brandService, seasonTypeService, vehicleTypeService) {
+function TireControllerFn(tireService, tireImageService, $http, brandService, seasonTypeService, vehicleTypeService, widthService, heightService, inchesService) {
     var vm = this;
 
     vm.save = save;
@@ -14,12 +14,18 @@ function TireControllerFn(tireService, tireImageService, $http, brandService, se
     vm.possibleBrands=[];
     vm.seasonTypes=[];
     vm.vehicleTypes=[];
+    vm.widths = [];
+    vm.heights = [];
+    vm.inches = [];
     vm.images =[];
 
     loadTires();
     loadBrands();
     loadSeasonTypes();
     loadVehicleTypes();
+    loadWidths();
+    loadHeights();
+    loadInches();
 
     function loadTires() {
         tireService.getAll().then(function (data) {
@@ -42,6 +48,24 @@ function TireControllerFn(tireService, tireImageService, $http, brandService, se
     function loadBrands() {
         brandService.getAll().then(function (data) {
             vm.possibleBrands = data;
+        });
+    }
+
+    function loadWidths() {
+        widthService.getAll().then(function (data) {
+            vm.widths = data;
+        });
+    }
+
+    function loadHeights() {
+        heightService.getAll().then(function (data) {
+            vm.heights = data;
+        });
+    }
+
+    function loadInches() {
+        inchesService.getAll().then(function (data) {
+            vm.inches = data;
         });
     }
 
@@ -121,6 +145,9 @@ function TireControllerFn(tireService, tireImageService, $http, brandService, se
                 loadBrands();
                 loadSeasonTypes();
                 loadVehicleTypes();
+                loadWidths();
+                loadHeights();
+                loadInches();
             });
     }
 

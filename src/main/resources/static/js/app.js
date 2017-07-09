@@ -41,6 +41,24 @@ app.config(function($routeProvider){
             controller:'mainController',
             controllerAs:'vm5'
         })
+        .when('/admin/width',
+            {
+                templateUrl:'views/width.html',
+                controller:'widthController',
+                controllerAs:'vm6'
+            })
+        .when('/admin/height',
+            {
+                templateUrl:'views/height.html',
+                controller:'heightController',
+                controllerAs:'vm7'
+            })
+        .when('/admin/inches',
+            {
+                templateUrl:'views/inches.html',
+                controller:'inchesController',
+                controllerAs:'vm8'
+            })
         .otherwise({
            redirectTo: '/'
         });

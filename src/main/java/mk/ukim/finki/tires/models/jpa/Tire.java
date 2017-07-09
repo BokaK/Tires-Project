@@ -13,12 +13,6 @@ public class Tire extends BaseEntity{
 
     private String description;
 
-    private double width;
-
-    private double height;
-
-    private double inches;
-
     private double price;
 
     private double priceOnSale;
@@ -33,6 +27,18 @@ public class Tire extends BaseEntity{
     @JoinColumn(name="brandName_id")
     private Brand brandName;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="width_id")
+    private Width width;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="height_id")
+    private Height height;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="inches_id")
+    private Inches inches;
+
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="seasonType_id")
     private SeasonType seasonType;
@@ -40,30 +46,6 @@ public class Tire extends BaseEntity{
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="vehicleType_id")
     private VehicleType vehicleType;
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getInches() {
-        return inches;
-    }
-
-    public void setInches(double inches) {
-        this.inches = inches;
-    }
 
     public double getPrice() {
         return price;
@@ -143,5 +125,29 @@ public class Tire extends BaseEntity{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Width getWidth() {
+        return width;
+    }
+
+    public void setWidth(Width width) {
+        this.width = width;
+    }
+
+    public Height getHeight() {
+        return height;
+    }
+
+    public void setHeight(Height height) {
+        this.height = height;
+    }
+
+    public Inches getInches() {
+        return inches;
+    }
+
+    public void setInches(Inches inches) {
+        this.inches = inches;
     }
 }

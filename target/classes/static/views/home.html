@@ -25,25 +25,20 @@
         </div>
         <div class="form-group">
             <label>Ширина</label>
-            <input class="form-control"
-                   type="number"
-                   ng-required="true"
-                   ng-model="vm.entity.width">
+            <select id="ddl-width" ng-model="vm.entity.width" ng-options="x.width for x in vm.widths">
+            </select>
         </div>
         <div class="form-group">
             <label>Висина</label>
-            <input class="form-control"
-                   type="number"
-                   ng-required="true"
-                   ng-model="vm.entity.height">
+            <select id="ddl-height" ng-model="vm.entity.height" ng-options="x.height for x in vm.heights">
+            </select>
         </div>
         <div class="form-group">
             <label>Инчи</label>
-            <input class="form-control"
-                   type="number"
-                   ng-required="true"
-                   ng-model="vm.entity.inches">
+            <select id="ddl-inches" ng-model="vm.entity.inches" ng-options="x.inches for x in vm.inches">
+            </select>
         </div>
+        {{vm.entity.inches}}
         <div class="form-group">
             <label>Цена</label>
             <input class="form-control"
@@ -137,9 +132,9 @@
         <tr ng-repeat="e in vm.entities">
             <td>{{e.name}}</td>
             <td>{{e.description}}</td>
-            <td>{{e.width}}</td>
-            <td>{{e.height}}</td>
-            <td>{{e.inches}}</td>
+            <td>{{e.width.width}}</td>
+            <td>{{e.height.height}}</td>
+            <td>{{e.inches.inches}}</td>
             <td>{{e.price}}</td>
             <td>{{e.onSale}}</td>
             <td>{{e.priceOnSale}}</td>

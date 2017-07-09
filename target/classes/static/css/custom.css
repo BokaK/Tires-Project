@@ -4,7 +4,8 @@ body {
     height: 100%;
     font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: white;
-    background-color: black;
+    background: url(../images/b15.png) no-repeat fixed bottom right;
+
 }
 html {
     width: 100%;
@@ -26,6 +27,7 @@ p {
     margin: 0 0 25px;
     font-size: 18px;
     line-height: 1.5;
+    padding-top: 15px;
 }
 @media (min-width: 768px) {
     p {
@@ -125,7 +127,7 @@ p {
     text-align: center;
     color: white;
     background: url(../images/highway-cars.jpg) no-repeat bottom center scroll;
-    background-color: black;
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -298,19 +300,16 @@ body {
 .tire-section {
     padding-top: 100px;
     height: 100%;
-    background-color: black;
 }
 .contact-section
 {
     height: 100%;
-    background-color: black;
     padding-top: 50px;
 }
 .help-section {
     height: 100%;
     padding: 50px 0;
     color: white;
-    background-color: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -335,6 +334,7 @@ body {
     height: 500px;
     overflow: auto;
 }
+
 @media (max-height: 600px) {
     .page-top, .contact-section, .help-section, .tire-section
     {
@@ -345,3 +345,81 @@ body {
         height: 60vh;
     }
 }
+@media (max-width: 1200px) {
+    #div2
+    {
+        width: 78%;
+        float: right;
+    }
+    #div-filter
+    {
+        width: 28%;
+    }
+}
+#div2
+{
+    background-color: aliceblue;
+    opacity: 0.4;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#div-filter
+{
+    text-align: left;
+    color: rgba(255, 255, 255, 0.78);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgba(0,0,0,0.6);
+}
+#ddl-seasonType, #ddl-brand, #ddl-height, #ddl-width, #ddl-inch
+{
+    width: 100%;
+    height: 35px;
+    background-color: transparent;
+    border: solid 2px;
+    border-radius: 15px;
+
+}
+option
+{
+    color: black;
+    font-size: 15px;
+}
+#div3
+{
+    width:100%;
+    display: table;
+    float: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    font-size: 20px;
+    padding-top: 15px;
+}
+.width-filter, .height-filter, .inch-filter
+{
+    display: table-cell;
+    padding: 0 10px 0 0;
+    vertical-align: middle;
+    width: 100px;
+}
+.div-filter-width-name, .div-filter-height-name, .div-filter-inch-name
+{
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 18px;
+    margin-bottom: 11px;
+}
+.div-filter-width, .div-filter-height, .div-filter-inch
+{
+    width: 100%;
+    position: relative;
+    display: block;
+    z-index: 9;
+    float: left;
+}
+
+
+
+
+
+
+
