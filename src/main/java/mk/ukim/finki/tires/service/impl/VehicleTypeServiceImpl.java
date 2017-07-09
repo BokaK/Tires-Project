@@ -3,6 +3,7 @@ package mk.ukim.finki.tires.service.impl;
 import mk.ukim.finki.tires.models.jpa.VehicleType;
 import mk.ukim.finki.tires.persistence.VehicleTypeRepository;
 import mk.ukim.finki.tires.service.VehicleTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService {
 
     private final VehicleTypeRepository vehicleTypeRepository;
 
+    @Autowired
     public VehicleTypeServiceImpl(VehicleTypeRepository vehicleTypeRepository) {
         this.vehicleTypeRepository = vehicleTypeRepository;
     }

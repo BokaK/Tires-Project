@@ -3,6 +3,7 @@ package mk.ukim.finki.tires.service.impl;
 import mk.ukim.finki.tires.models.jpa.Inches;
 import mk.ukim.finki.tires.persistence.InchesRepository;
 import mk.ukim.finki.tires.service.InchesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class InchesServiceImpl implements InchesService {
 
     private final InchesRepository inchesRepository;
 
+    @Autowired
     public InchesServiceImpl(InchesRepository inchesRepository) {
         this.inchesRepository = inchesRepository;
     }

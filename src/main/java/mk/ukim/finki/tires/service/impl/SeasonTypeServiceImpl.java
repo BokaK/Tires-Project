@@ -3,6 +3,7 @@ package mk.ukim.finki.tires.service.impl;
 import mk.ukim.finki.tires.models.jpa.SeasonType;
 import mk.ukim.finki.tires.persistence.SeasonTypeRepository;
 import mk.ukim.finki.tires.service.SeasonTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class SeasonTypeServiceImpl implements SeasonTypeService {
 
     private final SeasonTypeRepository seasonTypeRepository;
 
+    @Autowired
     public SeasonTypeServiceImpl(SeasonTypeRepository seasonTypeRepository) {
         this.seasonTypeRepository = seasonTypeRepository;
     }

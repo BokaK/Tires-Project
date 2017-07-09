@@ -3,6 +3,7 @@ package mk.ukim.finki.tires.service.impl;
 import mk.ukim.finki.tires.models.jpa.Height;
 import mk.ukim.finki.tires.persistence.HeightRepository;
 import mk.ukim.finki.tires.service.HeightService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class HeightServiceImpl implements HeightService {
 
     private final HeightRepository heightRepository;
 
+    @Autowired
     public HeightServiceImpl(HeightRepository heightRepository) {
         this.heightRepository = heightRepository;
     }

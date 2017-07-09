@@ -2,6 +2,7 @@ package mk.ukim.finki.tires.service.impl;
 
 import mk.ukim.finki.tires.models.jpa.User;
 import mk.ukim.finki.tires.persistence.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import mk.ukim.finki.tires.service.UserService;
 
@@ -15,6 +16,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

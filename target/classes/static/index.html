@@ -15,14 +15,15 @@
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
 
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
-<body ng-app="app" ng-cloak class="ng-cloak page-top" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body ng-app="app" ng-cloak class="ng-cloak page-top" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-controller="mainController as vm5">
 
 
 <!-- Navigation -->
@@ -30,10 +31,11 @@
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                Menu <i class="fa fa-bars"></i>
+                <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand page-scroll" href="#page-top">
-                <i class="fa fa-home" style="font-size: 50px; margin-top: -17px;color:white"></i>
+                <i class="fa fa-home"
+                   style="font-size: 50px; margin-top: -17px;color:white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"></i>
             </a>
         </div>
 
@@ -44,13 +46,16 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#tires" style="color: white">Гуми</a>
+                    <a class="page-scroll" href="#tires"
+                       style="color: white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Гуми</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#help" style="color: white">Помош</a>
+                    <a class="page-scroll" href="#help"
+                       style="color: white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Помош</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#contact" style="color: white">Контакт</a>
+                    <a class="page-scroll" href="#contact"
+                       style="color: white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Контакт</a>
                 </li>
             </ul>
         </div>
@@ -63,39 +68,26 @@
 <header class="intro">
     <div class="intro-body">
         <div class="container">
-            <div class="row" >
-                <div class="col-lg-5" id="search">
-                    <h1 id="appearing-div">Prebaraj</h1>
-                    <p>
-                        Изберете:
-                        <span>Ширина:</span>
-                        <span>Висина:</span>
-                        <span>Инчи:</span>
-                    </p>
-                    <p>
-                        <select>
-                            <option>
-                                Letni
-                            </option>
-                            <option>
-                                Zimski
-                            </option><option>
-                            Za site sezoni
-                        </option>
-
-
-                        </select>
-                        <select>
-                            <option>
-                                1
-                            </option>
-                        </select>
-                        <select>
-                            <option>
-                                2
-                            </option>
+            <div class="row">
+                <div class="col-lg-5" id="search" style="padding-bottom: 20px">
+                    <h1 id="appearing-div" style="text-align: center;">Пребарај</h1>
+                    <p>Изберете:</p>
+                    <p class="row" style="text-align: left;">
+                        <span class="col-md-3 col-md-offset-1">Ширина:</span>
+                        <select class="col-md-4" ng-model="vm5.selectedWidth" ng-options="x.width for x in vm5.widths">
                         </select>
                     </p>
+                    <p class="row" style="text-align: left;">
+                        <span class="col-md-3 col-md-offset-1">Висина:</span>
+                        <select class="col-md-4" ng-model="vm5.selectedHeight" ng-options="x.height for x in vm5.heights">
+                        </select>
+                    </p>
+                    <p class="row" style="text-align: left;">
+                        <span class="col-md-3 col-md-offset-1">Инчи:</span>
+                        <select class="col-md-4" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches">
+                        </select>
+                    </p>
+                    <br/>
                     <button id="button-search" class="button button-default btn-lg">
                         Пребарај!
                     </button>
@@ -105,18 +97,19 @@
     </div>
 </header>
 <!-- Tires -->
-<section id="tires" class="container tire-section text-center" ng-controller="mainController as vm5">
+<section id="tires" class="container tire-section">
     <div class="row" id="row-tires">
         <div class="col-lg-3 col-lg-offset-1" id="div-filter">
             <h3>Филтрирање на приказ:</h3>
             <hr/>
             <p><i>Сезона: </i></p>
-            <select id="ddl-seasonType" ng-model="vm5.selectedSeasonType" ng-options="x.seasonType for x in vm5.seasonTypes">
+            <select id="ddl-seasonType" ng-model="vm5.selectedSeasonType"
+                    ng-options="x.seasonType for x in vm5.seasonTypes">
             </select>
             <p>Бренд на производ:</p>
             <select id="ddl-brand" ng-model="vm5.selectedBrand" ng-options="x.brandName for x in vm5.brands">
             </select>
-            <div id="div3">
+            <div id="div3" style="padding-bottom: 20px">
                 <div class="width-filter">
                     <div class="div-filter-width-name">
                         Ширина:
@@ -140,19 +133,18 @@
                         Инчи:
                     </div>
                     <div class="div-filter-inch">
-                        <select id="ddl-inch" ng-model="vm5.selectedInch" ng-options="x.inch for x in vm5.inches">
+                        <select id="ddl-inch" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches">
                         </select>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-8" id="div2">
-            <div class="row" id="div1">
+            <div class="row" style="height: 500px;overflow: auto;" ng-repeat="e in vm5.entities">
                 <div class="col-lg-12">
-                    <p ng-repeat="e in vm5.entities">
-                    {{e.name}}
-                    </p>
-
+                    <h1>{{e.name}}</h1>
+                    <img ng-src="/admin/tireImage/tire/{{e.id}}" style="height: 50px;width:50px">
+                    <span>{{e.description}}</span>
                 </div>
             </div>
         </div>
@@ -161,18 +153,18 @@
 
 <!-- Help-->
 <section id="help" class="help-section text-center container">
-        <div class="row">
-            <div class="col-lg-8">
-                <p>Help</p>
-            </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <p>Help</p>
         </div>
+    </div>
 </section>
 
 <!-- Contact Section -->
 <section id="contact" class="container contact-section text-center">
     <div class="row">
         <div class="col-lg-8">
-         <p>Contact</p>
+            <p>Contact</p>
         </div>
     </div>
 </section>
@@ -187,9 +179,9 @@
 
 <script src="js/login-controller.js"></script>
 
-<script src="js/main-controller.js"> </script>
+<script src="js/main-controller.js"></script>
 
-<script src="js/main-service.js"> </script>
+<script src="js/main-service.js"></script>
 
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
 

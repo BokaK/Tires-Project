@@ -3,6 +3,7 @@ package mk.ukim.finki.tires.service.impl;
 import mk.ukim.finki.tires.models.jpa.Brand;
 import mk.ukim.finki.tires.persistence.BrandRepository;
 import mk.ukim.finki.tires.service.BrandService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class BrandServiceImpl implements BrandService {
 
     private final BrandRepository brandRepository;
 
+    @Autowired
     public BrandServiceImpl(BrandRepository brandRepository) {
         this.brandRepository = brandRepository;
     }

@@ -3,6 +3,7 @@ package mk.ukim.finki.tires.service.impl;
 import mk.ukim.finki.tires.models.jpa.Width;
 import mk.ukim.finki.tires.persistence.WidthRepository;
 import mk.ukim.finki.tires.service.WidthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class WidthServiceImpl implements WidthService {
 
     private final WidthRepository widthRepository;
 
+    @Autowired
     public WidthServiceImpl(WidthRepository widthRepository) {
         this.widthRepository = widthRepository;
     }

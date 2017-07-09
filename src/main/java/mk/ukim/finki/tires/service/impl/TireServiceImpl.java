@@ -4,6 +4,7 @@ import mk.ukim.finki.tires.models.jpa.Tire;
 import mk.ukim.finki.tires.models.jpa.TireImage;
 import mk.ukim.finki.tires.persistence.TireImageRepository;
 import mk.ukim.finki.tires.persistence.TireRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import mk.ukim.finki.tires.service.TireService;
 
@@ -19,6 +20,7 @@ public class TireServiceImpl implements TireService {
     private final TireRepository tireRepository;
     private final TireImageRepository tireImageRepository;
 
+    @Autowired
     public TireServiceImpl(TireRepository tireRepository, TireImageRepository tireImageRepository) {
         this.tireRepository = tireRepository;
         this.tireImageRepository = tireImageRepository;

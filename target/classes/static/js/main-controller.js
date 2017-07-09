@@ -21,7 +21,7 @@ function MainControllerFn(mainService) {
     vm.widths = [];
     vm.selectedWidth = {};
     vm.inches = [];
-    vm.selectedInches = {};
+    vm.selectedInch = {};
 
     loadTires();
     loadBrands();
