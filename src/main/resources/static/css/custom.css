@@ -11,6 +11,7 @@ html {
     width: 100%;
     height: 100%;
 }
+
 h1,
 h2,
 h3,
@@ -42,6 +43,8 @@ p {
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
+    float: right;
+    margin-top: 20px;
 }
 #button-search:hover,
 #button-search:focus {
@@ -136,6 +139,7 @@ p {
 .intro .intro-body {
     display: table-cell;
     vertical-align: middle;
+
 }
 .intro .intro-body .brand-heading {
     font-size: 40px;
@@ -155,33 +159,32 @@ p {
         font-size: 26px;
     }
 }
-.btn-circle {
+.button-circle {
     width: 70px;
     height: 70px;
     margin-top: 15px;
-    padding: 7px 16px;
+    padding: 5px 5px;
     border: 2px solid white;
     border-radius: 100% !important;
-    font-size: 40px;
-    color: white;
+    color: #42DCA3;
     background: transparent;
     -webkit-transition: background 0.3s ease-in-out;
     -moz-transition: background 0.3s ease-in-out;
     transition: background 0.3s ease-in-out;
 }
-.btn-circle:hover,
-.btn-circle:focus {
+.button-circle:hover,
+.button-circle:focus {
     outline: none;
     color: white;
     background: rgba(255, 255, 255, 0.1);
 }
-.btn-circle i.animated {
+.button-circle i.animated {
     -webkit-transition-property: -webkit-transform;
     -webkit-transition-duration: 1s;
     -moz-transition-property: -moz-transform;
     -moz-transition-duration: 1s;
 }
-.btn-circle:hover i.animated {
+.button-circle:hover i.animated {
     -webkit-animation-name: pulse;
     -moz-animation-name: pulse;
     -webkit-animation-duration: 1.5s;
@@ -358,11 +361,11 @@ body {
 }
 #div2
 {
-    background-color: aliceblue;
-    opacity: 0.4;
+    background-color: rgba(211,211,190,0.5);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
+    height: 80vh;
 }
 #div-filter
 {
@@ -371,8 +374,9 @@ body {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: rgba(0,0,0,0.6);
+
 }
-#ddl-seasonType, #ddl-brand, #ddl-height, #ddl-width, #ddl-inch
+#ddl-seasonType, .ddl-brand, .ddl-height, .ddl-width, .ddl-inch
 {
     width: 100%;
     height: 35px;
@@ -386,7 +390,7 @@ option
     color: black;
     font-size: 15px;
 }
-#div3
+.div3
 {
     width:100%;
     display: table;
@@ -417,9 +421,135 @@ option
     float: left;
 }
 
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    float: right;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 1;
+    position: relative;
+    top: -21px;
+    right: 118px;
+
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+/*CSS For scrollbar*/
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+/*CSS For loading page*/
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../images/loader-64x/Preloader_2.gif) center no-repeat #fff;
+}
 
 
 
 
+#cartModal {
+              position: fixed;
+              overflow: hidden;
+              height: 100%;
+              background: white;
+    width: 30%;
+              top: 0;
+              bottom: 0;
+    left:70%;
+    box-shadow: -23px 0 160px 20px rgba(0, 0, 0, 0.74);
+    opacity: 1;
+    -webkit-animation: moveCart 1.5s ease;
+    -webkit-transition: all 1.5s linear;
+}
 
-
+@-webkit-keyframes moveCart {
+    from {
+        -webkit-transform: translateX(100%);
+    }
+    to {
+        -webkit-transform: translateX(0%);
+    }
+}

@@ -19,13 +19,14 @@
           type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
 <body ng-app="app" ng-cloak class="ng-cloak page-top" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-controller="mainController as vm5">
 
-
+<div class="se-pre-con"></div>
 <!-- Navigation -->
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
@@ -33,10 +34,11 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">
+            <a style="border: none; color: white" class="navbar-brand page-scroll" href="#page-top" id="btn-pageTop">
                 <i class="fa fa-home"
-                   style="font-size: 50px; margin-top: -17px;color:white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"></i>
+                   style="font-size: 50px; margin-top: -17px;color:white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; border: none;"></i>
             </a>
+
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,6 +60,11 @@
                        style="color: white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Контакт</a>
                 </li>
             </ul>
+            <a href="#" style="float: right; color: white" id="myBtn" data-toggle="modal" data-target="#cartModal" >
+                <i class="fa fa-shopping-cart" aria-hidden="true"
+                   style="font-size: 50px;color:white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"></i>
+            </a>
+
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -70,27 +77,61 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5" id="search" style="padding-bottom: 20px">
-                    <h1 id="appearing-div" style="text-align: center;">Пребарај</h1>
-                    <p>Изберете:</p>
-                    <p class="row" style="text-align: left;">
-                        <span class="col-md-3 col-md-offset-1">Ширина:</span>
-                        <select class="col-md-4" ng-model="vm5.selectedWidth" ng-options="x.width for x in vm5.widths">
-                        </select>
-                    </p>
-                    <p class="row" style="text-align: left;">
-                        <span class="col-md-3 col-md-offset-1">Висина:</span>
-                        <select class="col-md-4" ng-model="vm5.selectedHeight" ng-options="x.height for x in vm5.heights">
-                        </select>
-                    </p>
-                    <p class="row" style="text-align: left;">
-                        <span class="col-md-3 col-md-offset-1">Инчи:</span>
-                        <select class="col-md-4" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches">
-                        </select>
-                    </p>
-                    <br/>
-                    <button id="button-search" class="button button-default btn-lg">
-                        Пребарај!
-                    </button>
+                    <h1 id="appearing-div" style="text-align: center;color: white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Пребарај</h1>
+                    <p style="color:rgba(255, 255, 255, 0.78);">Бренд на производ:</p>
+                    <select style="width: 50%" class="ddl-brand" ng-model="vm5.selectedBrand" ng-options="x.brandName for x in vm5.brands">
+                    </select>
+                    <hr style="border-top: none; background-color: rgba(255,255,255,0.25); height: 1px">
+                    <div class="div3" style="padding-bottom: 20px; padding-top: 20px;">
+                        <div class="width-filter">
+                            <div class="div-filter-width-name">
+                                Ширина:
+                            </div>
+                            <div class="div-filter-width">
+                                <select class="ddl-width" ng-model="vm5.selectedWidth" ng-options="x.width for x in vm5.widths">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="height-filter">
+                            <div class="div-filter-height-name">
+                                Висина:
+                            </div>
+                            <div class="div-filter-height">
+                                <select class="ddl-height" ng-model="vm5.selectedHeight" ng-options="x.height for x in vm5.heights">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="inch-filter">
+                            <div class="div-filter-inch-name">
+                                Инчи:
+                            </div>
+                            <div class="div-filter-inch">
+                                <select class="ddl-inch" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches">
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8" style="float: left; margin-top: 25px; text-align: left;">
+                            Kako da doznaete merki?
+                            <a id="myImg" href="#" class="button button-circle page-scroll">
+                                <i class="fa fa-question animated" style="font-size: 20px;"></i>
+                            </a>
+                            <div id="myModal" class="modal">
+                                <span class="close" style="color: white; font-size:30px">&times;</span>
+                                <img class="modal-content img img-responsive" id="img01" src="images/measures2.jpg">
+                                <div id="caption">Како да ги дознаете мерките?</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#tires" id="button-search" class="button button-default btn-lg page-scroll">
+                                Пребарај!
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -102,20 +143,20 @@
         <div class="col-lg-3 col-lg-offset-1" id="div-filter">
             <h3>Филтрирање на приказ:</h3>
             <hr/>
-            <p><i>Сезона: </i></p>
+            <p>Сезона:</p>
             <select id="ddl-seasonType" ng-model="vm5.selectedSeasonType"
                     ng-options="x.seasonType for x in vm5.seasonTypes">
             </select>
             <p>Бренд на производ:</p>
-            <select id="ddl-brand" ng-model="vm5.selectedBrand" ng-options="x.brandName for x in vm5.brands">
+            <select class="ddl-brand" ng-model="vm5.selectedBrand" ng-options="x.brandName for x in vm5.brands" style="width: 100%;">
             </select>
-            <div id="div3" style="padding-bottom: 20px">
+            <div class="div3" style="padding-bottom: 20px">
                 <div class="width-filter">
                     <div class="div-filter-width-name">
                         Ширина:
                     </div>
                     <div class="div-filter-width">
-                        <select id="ddl-width" ng-model="vm5.selectedWidth" ng-options="x.width for x in vm5.widths">
+                        <select class="ddl-width" ng-model="vm5.selectedWidth" ng-options="x.width for x in vm5.widths">
                         </select>
                     </div>
                 </div>
@@ -124,7 +165,7 @@
                         Висина:
                     </div>
                     <div class="div-filter-height">
-                        <select id="ddl-height" ng-model="vm5.selectedHeight" ng-options="x.height for x in vm5.heights">
+                        <select class="ddl-height" ng-model="vm5.selectedHeight" ng-options="x.height for x in vm5.heights">
                         </select>
                     </div>
                 </div>
@@ -133,24 +174,28 @@
                         Инчи:
                     </div>
                     <div class="div-filter-inch">
-                        <select id="ddl-inch" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches">
+                        <select class="ddl-inch" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches">
                         </select>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-8" id="div2">
-            <div class="row" style="height: 500px;overflow: auto;" ng-repeat="e in vm5.entities">
-                <div class="col-lg-12">
+        <div class="col-lg-8" id="div2"  style="height: 500px;overflow: auto;">
+            <div class="row" ng-repeat="e in vm5.entities" style="margin: 25px 10px;">
+                <div class="col-lg-3" style="margin-bottom: 25px">
+                    <img ng-src="/tireImage/tire/{{e.id}}" style="height: 150px;width:150px" class="img img-responsive img-circle">
+                </div>
+                <div class="col-lg-8">
                     <h1>{{e.name}}</h1>
-                    <img ng-src="/admin/tireImage/tire/{{e.id}}" style="height: 50px;width:50px">
                     <span>{{e.description}}</span>
                 </div>
+                <hr style="background-color: rgba(0,0,0,0.6); height: 1px; width: 90%; margin-left: 50px">
+
             </div>
         </div>
+
     </div>
 </section>
-
 <!-- Help-->
 <section id="help" class="help-section text-center container">
     <div class="row">
@@ -159,7 +204,6 @@
         </div>
     </div>
 </section>
-
 <!-- Contact Section -->
 <section id="contact" class="container contact-section text-center">
     <div class="row">
@@ -168,6 +212,12 @@
         </div>
     </div>
 </section>
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+</div>
+</div>
 
 <script src="/webjars/angularjs/1.4.9/angular.js"></script>
 
