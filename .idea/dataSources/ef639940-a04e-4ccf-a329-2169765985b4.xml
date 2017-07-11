@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="tires@localhost">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
     <root id="1"/>
     <schema id="2" parent="1" name="tires">
       <Current>1</Current>
@@ -40,7 +40,6 @@
       <DataType>varchar(255)|0</DataType>
     </column>
     <key id="28" parent="11" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -59,7 +58,6 @@
       <DataType>double|0</DataType>
     </column>
     <key id="32" parent="12" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -89,7 +87,6 @@
       <ColNames>tire_id</ColNames>
     </index>
     <key id="39" parent="13" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -133,7 +130,6 @@
       <ColNames>cart_id</ColNames>
     </index>
     <key id="49" parent="14" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -174,7 +170,6 @@
       <DataType>varchar(255)|0</DataType>
     </column>
     <key id="57" parent="15" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -208,7 +203,6 @@
       <ColNames>customer_id</ColNames>
     </index>
     <key id="65" parent="16" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -230,7 +224,6 @@
       <NotNull>1</NotNull>
     </column>
     <key id="69" parent="17" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -246,7 +239,6 @@
       <NotNull>1</NotNull>
     </column>
     <key id="72" parent="18" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -280,7 +272,6 @@
       <ColNames>checkout_id</ColNames>
     </index>
     <key id="80" parent="19" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -301,7 +292,6 @@
       <DataType>varchar(255)|0</DataType>
     </column>
     <key id="84" parent="20" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -387,7 +377,6 @@
       <ColNames>height_id</ColNames>
     </index>
     <key id="105" parent="21" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -445,7 +434,6 @@
       <ColNames>tire_id</ColNames>
     </index>
     <key id="116" parent="22" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -482,7 +470,6 @@
       <DataType>varchar(255)|0</DataType>
     </column>
     <key id="124" parent="23" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -497,7 +484,6 @@
       <DataType>varchar(255)|0</DataType>
     </column>
     <key id="127" parent="24" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
@@ -513,7 +499,6 @@
       <NotNull>1</NotNull>
     </column>
     <key id="130" parent="25" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

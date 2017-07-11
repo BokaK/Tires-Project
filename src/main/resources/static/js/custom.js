@@ -70,3 +70,24 @@ $(window).load(function() {
     // Animate loader off screen
     $(".se-pre-con").fadeOut("slow");
 });
+
+$("#unselectBrand").click(function(){
+    $('.ddl-brand').val([]);
+
+});
+$("#unselectHeight").click(function(){
+    $('.ddl-height').val([]);
+
+});
+$("#unselectSeasonType").click(function(){
+    $('#ddl-seasonType').val([]);
+
+});
+$("#unselectWidth").click(function(){
+    $('.ddl-width').val([]);
+
+});
+$("#unselectInch").click(function(){
+    $('.ddl-inch').val([]);
+
+});

@@ -143,51 +143,62 @@
         <div class="col-lg-3 col-lg-offset-1" id="div-filter">
             <h3>Филтрирање на приказ:</h3>
             <hr/>
-            <p>Сезона:</p>
+            <div>
+            <p style="display: inline">Сезона:</p>
+            <button id="unselectSeasonType" ng-click="vm5.selectedSeasonType = ''"> <i class="fa fa-close"></i></button>
+            </div>
             <select id="ddl-seasonType" ng-model="vm5.selectedSeasonType"
                     ng-options="x.seasonType for x in vm5.seasonTypes">
             </select>
-            <p>Бренд на производ:</p>
+            <div style="padding-top: 15px">
+            <p style="display: inline">Бренд на производ:</p>
+                <button id="unselectBrand" ng-click="vm5.selectedBrand = ''"> <i class="fa fa-close"></i></button>
+            </div>
             <select class="ddl-brand" ng-model="vm5.selectedBrand" ng-options="x.brandName for x in vm5.brands" style="width: 100%;">
             </select>
-            <div class="div3" style="padding-bottom: 20px">
+            <div class="div3" style="padding-bottom: 20px;padding-top: 25px;">
                 <div class="width-filter">
                     <div class="div-filter-width-name">
                         Ширина:
+                        <button id="unselectWidth" ng-click="vm5.selectedWidth = ''"><i class="fa fa-close" style="font-size: 14px;"></i></button>
                     </div>
                     <div class="div-filter-width">
-                        <select class="ddl-width" ng-model="vm5.selectedWidth" ng-options="x.width for x in vm5.widths">
+                        <select class="ddl-width" ng-model="vm5.selectedWidth" ng-options="x.width for x in vm5.widths | filter:vm5.filterWidths">
                         </select>
                     </div>
                 </div>
                 <div class="height-filter">
                     <div class="div-filter-height-name">
                         Висина:
+                        <button id="unselectHeight" ng-click="vm5.selectedHeight = ''"><i class="fa fa-close" style="font-size: 14px;"></i></button>
                     </div>
                     <div class="div-filter-height">
-                        <select class="ddl-height" ng-model="vm5.selectedHeight" ng-options="x.height for x in vm5.heights">
+                        <select class="ddl-height" ng-model="vm5.selectedHeight" ng-options="x.height for x in vm5.heights | filter:vm5.filterHeights">
                         </select>
                     </div>
                 </div>
                 <div class="inch-filter">
                     <div class="div-filter-inch-name">
                         Инчи:
+                        <button id="unselectInch" ng-click="vm5.selectedInch = ''"><i class="fa fa-close" style="font-size: 14px;"></i></button>
+
                     </div>
                     <div class="div-filter-inch">
-                        <select class="ddl-inch" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches">
+                        <select class="ddl-inch" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches | filter:vm5.filterInches">
                         </select>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-8" id="div2"  style="height: 500px;overflow: auto;">
-            <div class="row" ng-repeat="e in vm5.entities" style="margin: 25px 10px;">
+            <div class="row" ng-repeat="e in vm5.entities |  filter: vm5.filterFunction" style="margin: 25px 10px;">
                 <div class="col-lg-3" style="margin-bottom: 25px">
                     <img ng-src="/tireImage/tire/{{e.id}}" style="height: 150px;width:150px" class="img img-responsive img-circle">
                 </div>
                 <div class="col-lg-8">
                     <h1>{{e.name}}</h1>
                     <span>{{e.description}}</span>
+                    <p>{{e.width}}</p>
                 </div>
                 <hr style="background-color: rgba(0,0,0,0.6); height: 1px; width: 90%; margin-left: 50px">
 

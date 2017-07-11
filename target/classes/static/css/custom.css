@@ -351,8 +351,7 @@ body {
 @media (max-width: 1200px) {
     #div2
     {
-        width: 78%;
-        float: right;
+        width: 72%;
     }
     #div-filter
     {
@@ -366,6 +365,7 @@ body {
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     height: 80vh;
+    float: right;
 }
 #div-filter
 {
@@ -374,6 +374,7 @@ body {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: rgba(0,0,0,0.6);
+    float: left;
 
 }
 #ddl-seasonType, .ddl-brand, .ddl-height, .ddl-width, .ddl-inch
@@ -383,6 +384,7 @@ body {
     background-color: transparent;
     border: solid 2px;
     border-radius: 15px;
+
 
 }
 option
@@ -411,6 +413,7 @@ option
     color: rgba(255, 255, 255, 0.78);
     line-height: 18px;
     margin-bottom: 11px;
+    font-size: 16px;
 }
 .div-filter-width, .div-filter-height, .div-filter-inch
 {
@@ -552,4 +555,12 @@ option
     to {
         -webkit-transform: translateX(0%);
     }
+}
+#unselectSeasonType, #unselectBrand, #unselectHeight, #unselectInch, #unselectWidth
+{
+    background: transparent;
+    border: none;
+    float: right;
+    color: #42DCA3;
+    opacity: 0.8;
 }
