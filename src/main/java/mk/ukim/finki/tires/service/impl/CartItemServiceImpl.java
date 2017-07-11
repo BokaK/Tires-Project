@@ -1,8 +1,11 @@
 package mk.ukim.finki.tires.service.impl;
 
+import mk.ukim.finki.tires.models.jpa.Cart;
 import mk.ukim.finki.tires.models.jpa.CartItem;
+import mk.ukim.finki.tires.models.jpa.Tire;
 import mk.ukim.finki.tires.persistence.CartItemRepository;
 import mk.ukim.finki.tires.service.CartItemService;
+import mk.ukim.finki.tires.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +34,8 @@ public class CartItemServiceImpl implements CartItemService{
     }
 
     @Override
-    public void insert(CartItem entity) {
-        cartItemRepository.save(entity);
+    public void insert(CartItem cartItem) {
+        cartItemRepository.save(cartItem);
     }
 
     @Override
@@ -43,5 +46,10 @@ public class CartItemServiceImpl implements CartItemService{
     @Override
     public void deleteById(Long id) {
         cartItemRepository.delete(id);
+    }
+
+    @Override
+    public List<CartItem> findByCartId(Long id) {
+        return cartItemRepository.findByCartId(id);
     }
 }

@@ -7,10 +7,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.*;
 import java.nio.file.Files;
 import java.sql.SQLException;
@@ -38,10 +39,14 @@ public class MainController  implements ApplicationContextAware {
 
     private TireImageService tireImageService;
 
+    private final CartItemService cartItemService;
+
+    private final CartService cartService;
+
     @Autowired
     public MainController(TireService service, SeasonTypeService seasonTypeService, BrandService brandService,
                           WidthService widthService, HeightService heightService, InchesService inchesService,
-                          TireImageService tireImageService)
+                          TireImageService tireImageService, CartItemService cartItemService, CartService cartService)
     {
         this.brandService = brandService;
         this.service = service;
@@ -50,6 +55,8 @@ public class MainController  implements ApplicationContextAware {
         this.heightService = heightService;
         this.inchesService = inchesService;
         this.tireImageService = tireImageService;
+        this.cartItemService = cartItemService;
+        this.cartService = cartService;
     }
 
 
@@ -131,5 +138,26 @@ public class MainController  implements ApplicationContextAware {
             }
         }
 
+    }
+
+    @RequestMapping(value = "/cartItem/{quantity}", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void insert(@Valid @RequestBody Tire tire, @PathVariable int quantity) {
+        CartItem cartItem = new CartItem();
+        cartItem.setTire(tire);
+        Cart shoppingCart = cartService.getShoppingCartInSession();
+        cartItem.setCart(shoppingCart);
+        cartItem.setQuantity(quantity);
+        cartItemService.insert(cartItem);
+    }
+
+    @RequestMapping(value = "/cart", method = RequestMethod.GET)
+    public Cart getCart() {
+        return cartService.getShoppingCartInSession();
+    }
+
+    @RequestMapping(value = "/cartItem/{id}", method = RequestMethod.GET)
+    public List<CartItem> getCartItems(@PathVariable Long id) {
+        return cartItemService.findByCartId(id);
     }
 }

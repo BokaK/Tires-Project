@@ -8,6 +8,9 @@ import java.util.List;
  * Created by Simona on 7/10/2017.
  */
 public interface CartService {
+
+    Cart getShoppingCartInSession();
+    void updateCartInSession(Cart shoppingCart);
     List<Cart> findAll();
     Cart findById(Long id);
     void insert(Cart entity);

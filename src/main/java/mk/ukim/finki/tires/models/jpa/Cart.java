@@ -2,7 +2,7 @@ package mk.ukim.finki.tires.models.jpa;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by Simona on 7/9/2017.
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Table(name = "cart")
 public class Cart extends BaseEntity{
 
-    private LocalDateTime expiryDate;
+    private Date expiryDate;
     private Double totalPrice;
 
     public Double getTotalPrice() {
@@ -22,11 +22,11 @@ public class Cart extends BaseEntity{
         this.totalPrice = totalPrice;
     }
 
-    public LocalDateTime getExpiryDate() {
+    public Date getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(LocalDateTime expiryDate) {
+    public void setExpiryDate(Date expiryDate) {
         this.expiryDate = expiryDate;
     }
 }

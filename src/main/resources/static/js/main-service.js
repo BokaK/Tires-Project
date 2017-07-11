@@ -15,7 +15,10 @@ function MainServiceFn($http, $q) {
         getAllBrands: getAllBrandsFn,
         getAllWidths: getAllWidthsFn,
         getAllHeights: getAllHeightsFn,
-        getAllInches: getAllInchesFn
+        getAllInches: getAllInchesFn,
+        putInCart: putInCartFn,
+        getItemsInCart: getItemsInCartFn,
+        getCart: getCartFn
     };
     return service;
 
@@ -99,5 +102,48 @@ function MainServiceFn($http, $q) {
             );
         return deferred.promise;
     }
+
+    function putInCartFn(entity,quantity) {
+        var deferred = $q.defer();
+        $http.post('/cartItem/'+quantity,entity)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+
+    function getItemsInCartFn(cartId) {
+        var deferred = $q.defer();
+        $http.get('/cartItem/'+cartId)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+
+    function getCartFn(){
+        var deferred = $q.defer();
+        $http.get('/cart')
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+
 
 }
