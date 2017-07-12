@@ -19,7 +19,8 @@
           type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -115,14 +116,14 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-8" style="float: left; margin-top: 25px; text-align: left;">
-                            Kako da doznaete merki?
+                            <i>Како да ги дознаете димензиите за вашите гуми?</i>
                             <a id="myImg" href="#" class="button button-circle page-scroll">
                                 <i class="fa fa-question animated" style="font-size: 20px;"></i>
                             </a>
                             <div id="myModal" class="modal">
                                 <span class="close" style="color: white; font-size:30px">&times;</span>
                                 <img class="modal-content img img-responsive" id="img01" src="images/measures2.jpg">
-                                <div id="caption">Како да ги дознаете мерките?</div>
+                                <div id="caption">Како да ги прочитате мерките?</div>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -189,6 +190,17 @@
                     </div>
                 </div>
             </div>
+            <div class="row" style="font-size: 11px;padding-left: 20px; padding-bottom: 15px">
+                <i>Како да ги дознаете димензиите за вашите гуми?</i>
+                <a id="myImg2" href="#" class="button button-circle page-scroll">
+                    <i class="fa fa-question animated" style="font-size: 20px;"></i>
+                </a>
+                <div id="myModal2" class="modal2">
+                    <span class="close2" style="color: white; font-size:30px">&times;</span>
+                    <img class="modal-content2 img img-responsive" id="img02" src="images/measures2.jpg">
+                    <div id="caption2">Како да ги прочитате мерките?</div>
+                </div>
+            </div>
         </div>
         <div class="col-lg-8" id="div2"  style="height: 500px;overflow: auto;">
             <div class="row" ng-repeat="e in vm5.entities |  filter: vm5.filterFunction" style="margin: 25px 10px;">
@@ -198,7 +210,11 @@
                 <div class="col-lg-8">
                     <h1>{{e.name}}</h1>
                     <span>{{e.description}}</span>
-                    <p>{{e.width}}</p>
+                    <br/>
+                    <span>Ширина: {{e.width.width}}, Височина: {{e.height.height}}, Инчи: {{e.inches.inches}}</span>
+                    <br/>
+                    <br/>
+                    <button class="btn btn-default" style="float: right; background:#42DCA3; color: white;" ng-click="vm5.putInCart(e)">Стави во кошничка <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                 </div>
                 <hr style="background-color: rgba(0,0,0,0.6); height: 1px; width: 90%; margin-left: 50px">
 
@@ -210,8 +226,206 @@
 <!-- Help-->
 <section id="help" class="help-section text-center container">
     <div class="row">
-        <div class="col-lg-8">
-            <p>Help</p>
+        <div class="col-lg-4 col-lg-offset-1" style="color: black;">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
+                <div class="panel panel-default" style="margin-bottom: -5px">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Online-купување
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            текст за тоа како треба само информации и тел за контакт и дека стига смс порака
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" style="margin-bottom: -5px">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Брза испорака
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            текст за колку време може да стигне и такви работи
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" style="margin-bottom: -5px">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Начин на плаќање
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row" style="text-align: right">
+             <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+                <fieldset>
+                <div class="form-group" style="height: 35px;">
+                    <label class="col-md-4 control-label">Име</label>
+                    <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input  name="first_name" placeholder="Име" class="form-control"  type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group" style="height: 35px;">
+                    <label class="col-md-4 control-label" >Презиме</label>
+                    <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input name="last_name" placeholder="Презиме" class="form-control"  type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group" style="height: 35px;">
+                    <label class="col-md-4 control-label">E-Mail</label>
+                    <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input name="email" placeholder="E-Mail Адреса" class="form-control"  type="text">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Text input-->
+
+                <div class="form-group" style="height: 35px;">
+                    <label class="col-md-4 control-label">Телефонски број</label>
+                    <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            <input name="phone" placeholder="912-555-112" class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group" style="height: 35px;">
+                    <label class="col-md-4 control-label">Адреса</label>
+                    <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                            <input name="address" placeholder="Адреса на живеење" class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group" style="height: 35px;">
+                    <label class="col-md-4 control-label">Град</label>
+                    <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                            <input name="city" placeholder="Град на живеење" class="form-control"  type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success message -->
+                <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+
+                <!-- Button -->
+                <div class="form-group" style="height: 35px;">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+
+                </fieldset>
+                </form>
+
+
+
+
+
+            <!--<form data-toggle="validator" role="form" id="myForm">-->
+                <!--<div class="form-group">-->
+                    <!--<label for="inputName" class="control-label">Name</label>-->
+                    <!--<input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required>-->
+                <!--</div>-->
+                <!---->
+                <!--<div class="form-group has-feedback">-->
+                    <!--<label for="inputTwitter" class="control-label">Twitter</label>-->
+                    <!--<div class="input-group">-->
+                        <!--<span class="input-group-addon">@</span>-->
+                        <!--<input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputTwitter" placeholder="1000hz" required>-->
+                    <!--</div>-->
+                    <!--<span class="glyphicon form-control-feedback" aria-hidden="true"></span>-->
+                    <!--<div class="help-block with-errors">Hey look, this one has feedback icons!</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="inputEmail" class="control-label">Email</label>-->
+                    <!--<input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>-->
+                    <!--<div class="help-block with-errors"></div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="inputPassword" class="control-label">Password</label>-->
+                    <!--<div class="form-inline row">-->
+                        <!--<div class="form-group col-sm-6">-->
+                            <!--<input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>-->
+                            <!--<div class="help-block">Minimum of 6 characters</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-sm-6">-->
+                            <!--<input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>-->
+                            <!--<div class="help-block with-errors"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<div class="radio">-->
+                        <!--<label>-->
+                            <!--<input type="radio" name="underwear" required>-->
+                            <!--Boxers-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="radio">-->
+                        <!--<label>-->
+                            <!--<input type="radio" name="underwear" required>-->
+                            <!--Briefs-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<div class="checkbox">-->
+                        <!--<label>-->
+                            <!--<input type="checkbox" id="terms" data-error="Before you wreck yourself" required>-->
+                            <!--Check yourself-->
+                        <!--</label>-->
+                        <!--<div class="help-block with-errors"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                <!--</div>-->
+            <!--</form>-->
+            </div>
+            </div>
         </div>
     </div>
 </section>
@@ -219,14 +433,19 @@
 <section id="contact" class="container contact-section text-center">
     <div class="row">
         <div class="col-lg-8">
-            <p>Contact</p>
+            <h2>Contact</h2>
+            <p>tel</p>
+            <p>mail</p>
+            <p>rabotno vreme</p>
         </div>
     </div>
 </section>
 <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
+    <div ng-repeat="e in vm5.cartItems">
+        <h3>{{e.tire.name}}</h3>
+    </div>
 </div>
 </div>
 
@@ -251,7 +470,8 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
 <!-- Plugin JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
