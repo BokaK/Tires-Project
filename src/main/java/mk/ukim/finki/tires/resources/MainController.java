@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/", produces = "application/json")
-public class MainController  implements ApplicationContextAware {
+public class MainController implements ApplicationContextAware {
 
     private TireService service;
 
@@ -46,8 +46,7 @@ public class MainController  implements ApplicationContextAware {
     @Autowired
     public MainController(TireService service, SeasonTypeService seasonTypeService, BrandService brandService,
                           WidthService widthService, HeightService heightService, InchesService inchesService,
-                          TireImageService tireImageService, CartItemService cartItemService, CartService cartService)
-    {
+                          TireImageService tireImageService, CartItemService cartItemService, CartService cartService) {
         this.brandService = brandService;
         this.service = service;
         this.seasonTypeService = seasonTypeService;
@@ -106,7 +105,7 @@ public class MainController  implements ApplicationContextAware {
         File file = new File(tireImage.getImageUrl());
         String contentDisposition = String.format("inline;filename=\"%s\"",
                 file.getName() + "?tireId=" + id);
-        byte fileContent[] = new byte[(int)file.length()];
+        byte fileContent[] = new byte[(int) file.length()];
 
         try {
 
@@ -123,16 +122,13 @@ public class MainController  implements ApplicationContextAware {
 
             IOUtils.copy(bin, out);
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
 
-        }
-        finally {
-            if(in!=null) {
+        } finally {
+            if (in != null) {
                 in.close();
             }
-            if(out!=null)
-            {
+            if (out != null) {
                 out.flush();
                 out.close();
             }
@@ -146,9 +142,12 @@ public class MainController  implements ApplicationContextAware {
         CartItem cartItem = new CartItem();
         cartItem.setTire(tire);
         Cart shoppingCart = cartService.getShoppingCartInSession();
+        shoppingCart.setTotalPrice(shoppingCart.getTotalPrice() + tire.getPrice() * quantity);
+        cartService.update(shoppingCart.id, shoppingCart);
         cartItem.setCart(shoppingCart);
         cartItem.setQuantity(quantity);
         cartItemService.insert(cartItem);
+
     }
 
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
@@ -159,5 +158,29 @@ public class MainController  implements ApplicationContextAware {
     @RequestMapping(value = "/cartItem/{id}", method = RequestMethod.GET)
     public List<CartItem> getCartItems(@PathVariable Long id) {
         return cartItemService.findByCartId(id);
+    }
+
+    @RequestMapping(value = "/deleteCartItem/{id}", method = RequestMethod.DELETE)
+    public void deleteCartItem(@PathVariable Long id) {
+        CartItem cartItem = cartItemService.findById(id);
+        Cart cart = cartService.getShoppingCartInSession();
+        cart.setTotalPrice(cart.getTotalPrice() - (cartItem.getQuantity() * cartItem.getTire().getPrice()));
+        cartService.update(cart.id, cart);
+        cartItemService.deleteById(id);
+    }
+
+    @RequestMapping(value = "/cartItemPlus", method = RequestMethod.PUT)
+    public void updateCartItemPlus(@RequestBody CartItem cartItem){
+        Cart cart = cartService.getShoppingCartInSession();
+        cart.setTotalPrice(cart.getTotalPrice() + cartItem.getTire().getPrice());
+        cartItem.setQuantity(cartItem.getQuantity()+1);
+        cartItemService.update(cartItem.id,cartItem);
+    }
+    @RequestMapping(value = "/cartItemMinus", method = RequestMethod.PUT)
+    public void updateCartItemMinus(@RequestBody CartItem cartItem){
+        Cart cart = cartService.getShoppingCartInSession();
+        cart.setTotalPrice(cart.getTotalPrice() - cartItem.getTire().getPrice());
+        cartItem.setQuantity(cartItem.getQuantity()-1);
+        cartItemService.update(cartItem.id,cartItem);
     }
 }

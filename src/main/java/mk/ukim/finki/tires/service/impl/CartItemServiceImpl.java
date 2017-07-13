@@ -52,4 +52,5 @@ public class CartItemServiceImpl implements CartItemService{
     public List<CartItem> findByCartId(Long id) {
         return cartItemRepository.findByCartId(id);
     }
+
 }
