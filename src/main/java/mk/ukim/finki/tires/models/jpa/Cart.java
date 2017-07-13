@@ -12,6 +12,7 @@ import java.util.Date;
 public class Cart extends BaseEntity{
 
     private Date expiryDate;
+
     private Double totalPrice;
 
     public Double getTotalPrice() {

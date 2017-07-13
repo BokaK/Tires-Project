@@ -9,6 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "contact_info")
 public class ContactInfo extends BaseEntity {
+
     private String firstName;
 
     private String lastName;

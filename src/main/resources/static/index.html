@@ -45,7 +45,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-main-collapse">
             <ul class="nav navbar-nav">
-                <li class="hidden">
+                <li class="hidden" id="li-home">
                     <a href="#page-top"></a>
                 </li>
                 <li id="li-tires">
@@ -125,6 +125,7 @@
                                 <img class="modal-content img img-responsive" id="img01" src="images/measures2.jpg">
                                 <div id="caption">Како да ги прочитате мерките?</div>
                             </div>
+
                         </div>
                         <div class="col-lg-4">
                             <a href="#tires" id="button-search" class="button button-default btn-lg page-scroll">
@@ -164,7 +165,7 @@
                         <button id="unselectWidth" ng-click="vm5.selectedWidth = ''"><i class="fa fa-close" style="font-size: 14px;"></i></button>
                     </div>
                     <div class="div-filter-width">
-                        <select class="ddl-width" ng-model="vm5.selectedWidth" ng-options="x.width for x in vm5.widths | filter:vm5.filterWidths">
+                        <select class="ddl-width" ng-model="vm5.selectedWidth" ng-options="x.width for x in vm5.widths">
                         </select>
                     </div>
                 </div>
@@ -174,7 +175,7 @@
                         <button id="unselectHeight" ng-click="vm5.selectedHeight = ''"><i class="fa fa-close" style="font-size: 14px;"></i></button>
                     </div>
                     <div class="div-filter-height">
-                        <select class="ddl-height" ng-model="vm5.selectedHeight" ng-options="x.height for x in vm5.heights | filter:vm5.filterHeights">
+                        <select class="ddl-height" ng-model="vm5.selectedHeight" ng-options="x.height for x in vm5.heights">
                         </select>
                     </div>
                 </div>
@@ -185,7 +186,7 @@
 
                     </div>
                     <div class="div-filter-inch">
-                        <select class="ddl-inch" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches | filter:vm5.filterInches">
+                        <select class="ddl-inch" ng-model="vm5.selectedInch" ng-options="x.inches for x in vm5.inches">
                         </select>
                     </div>
                 </div>
@@ -208,13 +209,40 @@
                     <img ng-src="/tireImage/tire/{{e.id}}" style="height: 150px;width:150px" class="img img-responsive img-circle">
                 </div>
                 <div class="col-lg-8">
-                    <h1>{{e.name}}</h1>
-                    <span>{{e.description}}</span>
-                    <br/>
-                    <span>Ширина: {{e.width.width}}, Височина: {{e.height.height}}, Инчи: {{e.inches.inches}}</span>
-                    <br/>
-                    <br/>
-                    <button class="btn btn-default" style="float: right; background:#42DCA3; color: white;" ng-click="vm5.putInCart(e)">Стави во кошничка <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    <div class="row">
+                        <div class="col-lg-8" style="float: left">
+                            <h1>{{e.name}}</h1>
+                            <span>{{e.description}}</span>
+                            <br/>
+                            <span>{{e.width.width}}/{{e.height.height}}/{{e.inches.inches}}</span>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button onclick="minus()" id="button-minus" type="button" class="btn btn-danger"  >
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </span>
+                                        <input type="text" id="quantity" class="form-control input-number" value="4" min="1" max="100">
+                                <span class="input-group-btn">
+                                    <button onclick="plus()" id="button-plus" type="button" class="btn btn-success">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4" style="float: right; padding-top: 20px; text-align: center;">
+                            <div ng-show="e.onSale">
+                                <span id="price">{{e.price}} ден.</span>
+                                <span id="priceOnSale" class="price">{{e.priceOnSale}} ден.</span>
+                            </div>
+                            <div ng-show="e.onSale == false">
+                        <span class="price">
+                            {{e.price}} ден.
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="button-cart" class="button button-cart" ng-click="vm5.putInCart(e)">Стави во кошничка <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                 </div>
                 <hr style="background-color: rgba(0,0,0,0.6); height: 1px; width: 90%; margin-left: 50px">
 
@@ -227,6 +255,93 @@
 <section id="help" class="help-section text-center container">
     <div class="row">
         <div class="col-lg-4 col-lg-offset-1" style="color: black;">
+            <div class="row" style="text-align: right">
+                <form  action="#help" ng-submit="vm5.saveUser()" class="well form-horizontal"  id="contact_form">
+                    <fieldset>
+                        <div class="form-group" style="height: 35px;">
+                            <label class="col-md-4 control-label">Име</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input  ng-model="vm5.user.contactInfo.firstName" name="first_name" placeholder="Име" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+
+                        <div class="form-group" style="height: 35px;">
+                            <label class="col-md-4 control-label" >Презиме</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input ng-model="vm5.user.contactInfo.lastName" name="last_name" placeholder="Презиме" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">E-Mail</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input ng-model="vm5.user.email" name="email" placeholder="E-Mail Адреса" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Телефонски број</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input ng-model="vm5.user.contactInfo.phone" name="phone" placeholder="912-555-112" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Адреса</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input ng-model="vm5.user.deliveryInfo.address" name="address" placeholder="Адреса на живеење" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Град</label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input ng-model="vm5.user.deliveryInfo.city" name="city" placeholder="Град на живеење" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Success message -->
+                        <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-7 control-label"></label>
+                            <div class="col-md-4">
+                                <button type="submit" class="button button-default btn-lg" style="width: 150px;">Зачувај! <span class="glyphicon glyphicon-send"></span></button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
                 <div class="panel panel-default" style="margin-bottom: -5px">
                     <div class="panel-heading" role="tab" id="headingOne">
@@ -272,159 +387,6 @@
             </div>
 
 
-
-            <div class="row" style="text-align: right">
-             <form class="well form-horizontal" action=" " method="post"  id="contact_form">
-                <fieldset>
-                <div class="form-group" style="height: 35px;">
-                    <label class="col-md-4 control-label">Име</label>
-                    <div class="col-md-8 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input  name="first_name" placeholder="Име" class="form-control"  type="text">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text input-->
-
-                <div class="form-group" style="height: 35px;">
-                    <label class="col-md-4 control-label" >Презиме</label>
-                    <div class="col-md-8 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input name="last_name" placeholder="Презиме" class="form-control"  type="text">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">E-Mail</label>
-                    <div class="col-md-8 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input name="email" placeholder="E-Mail Адреса" class="form-control"  type="text">
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Text input-->
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Телефонски број</label>
-                    <div class="col-md-8 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                            <input name="phone" placeholder="912-555-112" class="form-control" type="text">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text input-->
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Адреса</label>
-                    <div class="col-md-8 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <input name="address" placeholder="Адреса на живеење" class="form-control" type="text">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text input-->
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Град</label>
-                    <div class="col-md-8 inputGroupContainer">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                            <input name="city" placeholder="Град на живеење" class="form-control"  type="text">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Success message -->
-                <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
-
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label"></label>
-                    <div class="col-md-4">
-                        <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
-                    </div>
-                </div>
-
-                </fieldset>
-                </form>
-
-
-
-
-
-            <!--<form data-toggle="validator" role="form" id="myForm">-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputName" class="control-label">Name</label>-->
-                    <!--<input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required>-->
-                <!--</div>-->
-                <!---->
-                <!--<div class="form-group has-feedback">-->
-                    <!--<label for="inputTwitter" class="control-label">Twitter</label>-->
-                    <!--<div class="input-group">-->
-                        <!--<span class="input-group-addon">@</span>-->
-                        <!--<input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputTwitter" placeholder="1000hz" required>-->
-                    <!--</div>-->
-                    <!--<span class="glyphicon form-control-feedback" aria-hidden="true"></span>-->
-                    <!--<div class="help-block with-errors">Hey look, this one has feedback icons!</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputEmail" class="control-label">Email</label>-->
-                    <!--<input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>-->
-                    <!--<div class="help-block with-errors"></div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label for="inputPassword" class="control-label">Password</label>-->
-                    <!--<div class="form-inline row">-->
-                        <!--<div class="form-group col-sm-6">-->
-                            <!--<input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>-->
-                            <!--<div class="help-block">Minimum of 6 characters</div>-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-sm-6">-->
-                            <!--<input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>-->
-                            <!--<div class="help-block with-errors"></div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<div class="radio">-->
-                        <!--<label>-->
-                            <!--<input type="radio" name="underwear" required>-->
-                            <!--Boxers-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="radio">-->
-                        <!--<label>-->
-                            <!--<input type="radio" name="underwear" required>-->
-                            <!--Briefs-->
-                        <!--</label>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<div class="checkbox">-->
-                        <!--<label>-->
-                            <!--<input type="checkbox" id="terms" data-error="Before you wreck yourself" required>-->
-                            <!--Check yourself-->
-                        <!--</label>-->
-                        <!--<div class="help-block with-errors"></div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
-                <!--</div>-->
-            <!--</form>-->
-            </div>
             </div>
         </div>
     </div>
@@ -462,6 +424,8 @@
 <script src="js/main-controller.js"></script>
 
 <script src="js/main-service.js"></script>
+
+<script src="js/user-service.js"> </script>
 
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
 

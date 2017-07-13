@@ -3,13 +3,13 @@
  */
 app.controller('mainController', MainControllerFn);
 
-MainControllerFn.$inject = ['mainService', '$scope'];
-
-function MainControllerFn(mainService, $scope) {
+MainControllerFn.$inject = ['mainService', 'userService'];
+function MainControllerFn(mainService, userService) {
     var vm = this;
 
     vm.entity = {};
     vm.entities = [];
+    vm.user = {};
     // All kinds of season type
     vm.seasonTypes = [];
     // Selected value from the dropdown list
@@ -25,10 +25,8 @@ function MainControllerFn(mainService, $scope) {
     vm.cartItems = [];
     vm.cart = {};
     vm.filterFunction = filterFunction;
-    vm.filterInches = filterInches;
-    vm.filterHeights = filterHeights;
-    vm.filterWidths = filterWidths;
     vm.putInCart = putInCart;
+    vm.saveUser = saveUser;
 
     getItemsInCart();
     loadTires();
@@ -308,16 +306,6 @@ function MainControllerFn(mainService, $scope) {
             }
         }
     };
-    function filterInches() {
-        return true;
-    };
-    function filterHeights() {
-        return true;
-    };
-    function filterWidths() {
-        return true;
-    };
-
     function putInCart(entity) {
         mainService.putInCart(entity, 1).then(function (data) {
             getItemsInCart();
@@ -332,5 +320,16 @@ function MainControllerFn(mainService, $scope) {
             });
         });
     }
+
+    function saveUser() {
+        var promise = userService.save(vm.user);
+        console.log(vm.user);
+        promise.then(successCallback, errorCallback);
+        function successCallback(object) {
+        }
+        function errorCallback(data) {
+        }
+    }
+
 
 }

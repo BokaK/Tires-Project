@@ -10,14 +10,24 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "delivery_info")
 public class DeliveryInfo extends BaseEntity{
-    private String country;
 
     private String city;
 
-    private String postalCode;
-
     private String address;
 
-    @ManyToOne
-    public User customer;
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

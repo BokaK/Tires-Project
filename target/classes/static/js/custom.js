@@ -56,7 +56,6 @@ span.onclick = function() {
 $(document).keydown(function(event) {
     if (event.keyCode == 27) {
         $("#myModal").hide();
-
     }
 });
 $(function () {
@@ -69,6 +68,7 @@ var img = document.getElementById('myImg2');
 var modalImg = document.getElementById("img02");
 var captionText = document.getElementById("caption2");
 img.onclick = function(){
+    $(".ddl-width, .ddl-height, .ddl-inch, .navbar").hide();
     modal.style.display = "block";
 };
 
@@ -79,17 +79,11 @@ var span = document.getElementsByClassName("close2")[0];
 span.onclick = function() {
     modal.style.display = "none";
     $('#tires')[0].scrollIntoView(true);
+    $(".ddl-width, .ddl-height, .ddl-inch, .navbar").show();
 };
 
 });
 
-$(document).keydown(function(event) {
-    if (event.keyCode == 27) {
-        $("#myModal2").hide();
-        $('#tires')[0].scrollIntoView(true);
-
-    }
-});
 $(function () {
    var pageTop = document.getElementById("btn-pageTop");
    pageTop.onclick = function () {
@@ -201,5 +195,46 @@ $(document).ready(function() {
         }
     })
 
+});
+
+function minus() {
+    var input = $('#quantity');
+  var currentVal = parseInt(input.val());
+  if (currentVal > input.attr('min'))
+  {
+      currentVal--;
+      input.val(currentVal).change();
+      if (currentVal < input.attr('max'))
+      {
+          $('#button-plus').attr('disabled', false);
+      }
+
+  }
+  if (parseInt(input.val()) == input.attr('min'))
+  {
+      $('#button-minus').attr('disabled', true);
+  }
+
+};
+function plus() {
+    var input = $('#quantity');
+    var currentVal = parseInt(input.val());
+    if (currentVal < input.attr('max'))
+    {
+        currentVal++;
+        input.val(currentVal).change();
+        if (currentVal > input.attr('min'))
+        {
+            $('#button-minus').attr('disabled', false);
+        }
+    }
+    if (parseInt(input.val()) == input.attr('max'))
+    {
+        $('#button-plus').attr('disabled', true);
+    }
+
+};
+$('#quantity').focusin(function(){
+    $(this).data('oldValue', $(this).val());
 });
 
