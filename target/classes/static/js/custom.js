@@ -237,4 +237,3 @@ function plus() {
 $('#quantity').focusin(function(){
     $(this).data('oldValue', $(this).val());
 });
-

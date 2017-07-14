@@ -18,7 +18,10 @@ function MainServiceFn($http, $q) {
         getAllInches: getAllInchesFn,
         putInCart: putInCartFn,
         getItemsInCart: getItemsInCartFn,
-        getCart: getCartFn
+        getCart: getCartFn,
+        removeFromCart: removeFromCartFn,
+        plusCartItem: plusCartItemFn,
+        minusCartItem: minusCartItemFn
     };
     return service;
 
@@ -145,5 +148,47 @@ function MainServiceFn($http, $q) {
         return deferred.promise;
     }
 
+    function removeFromCartFn(entity) {
+        var deferred = $q.defer();
+        $http.delete('/deleteCartItem/'+entity.id)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+
+    function plusCartItemFn(entity) {
+        var deferred = $q.defer();
+        $http.put('/cartItemPlus', entity)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+
+
+    function minusCartItemFn(entity) {
+        var deferred = $q.defer();
+        $http.put('/cartItemMinus', entity)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
 
 }

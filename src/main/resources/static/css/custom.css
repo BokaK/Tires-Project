@@ -725,12 +725,12 @@ option
     background-color: #1d9b6c !important;
 }
 
-.cart-number {
-    position: absolute;
+.badge {
+    position: relative;
     background: #F66C37;
     display: block;
-    top: 15px;
-    right: 100px;
+    top: -25px;
+    right: 25px;
     padding: 6px 5px;
     border-radius: 50px;
     color: white;

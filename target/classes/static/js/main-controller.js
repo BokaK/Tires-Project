@@ -24,9 +24,16 @@ function MainControllerFn(mainService, userService) {
     vm.selectedInch = "";
     vm.cartItems = [];
     vm.cart = {};
+    vm.quantity = 1;
+    vm.cartSize=0;
     vm.filterFunction = filterFunction;
     vm.putInCart = putInCart;
     vm.saveUser = saveUser;
+    vm.plus = plus;
+    vm.minus = minus;
+    vm.removeFromCart = removeFromCart;
+    vm.plusCartItem = plusCartItem;
+    vm.minusCartItem = minusCartItem;
 
     getItemsInCart();
     loadTires();
@@ -35,6 +42,17 @@ function MainControllerFn(mainService, userService) {
     loadWidths();
     loadHeights();
     loadInches();
+
+    function plus() {
+        vm.quantity++;
+    }
+
+    function minus() {
+        if(vm.quantity>1) {
+            vm.quantity--;
+        }else{
+        }
+    }
 
     function loadTires() {
         mainService.getAllTires().then(function (data) {
@@ -307,7 +325,7 @@ function MainControllerFn(mainService, userService) {
         }
     };
     function putInCart(entity) {
-        mainService.putInCart(entity, 1).then(function (data) {
+        mainService.putInCart(entity, vm.quantity).then(function (data) {
             getItemsInCart();
         });
     }
@@ -317,6 +335,8 @@ function MainControllerFn(mainService, userService) {
             vm.cart = data;
             mainService.getItemsInCart(vm.cart.id).then(function (data) {
                 vm.cartItems = data;
+                vm.cartSize = vm.cartItems.length;
+                console.log(vm.cartSize);
             });
         });
     }
@@ -332,4 +352,24 @@ function MainControllerFn(mainService, userService) {
     }
 
 
+    function removeFromCart(entity){
+        mainService.removeFromCart(entity).then(function (data) {
+            getItemsInCart();
+        });
+    }
+
+    function plusCartItem(entity) {
+        mainService.plusCartItem(entity).then(function (data) {
+            getItemsInCart();
+        });
+    }
+
+    function minusCartItem(entity) {
+        if(entity.quantity>1){
+            mainService.minusCartItem(entity).then(function (data) {
+                getItemsInCart();
+            });
+        }
+
+    }
 }

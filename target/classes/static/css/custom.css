@@ -514,12 +514,12 @@ option
 /* The Close Button */
 .close {
     float: right;
-    font-size: 70px;
+    font-size: 250px;
     font-weight: 700;
     line-height: 1;
     position: relative;
-    top: -21px;
-    right: 118px;
+    top: -20px;
+    right: 10px;
 
 }
 
@@ -723,4 +723,19 @@ option
 }
 .btn-success {
     background-color: #1d9b6c !important;
+}
+
+.badge {
+    position: relative;
+    background: #F66C37;
+    display: block;
+    top: -25px;
+    right: 25px;
+    padding: 6px 5px;
+    border-radius: 50px;
+    color: white;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 10px;
+    background-image: linear-gradient(-179deg, #FFAE6B 0%, #EF4E20 100%);
 }
