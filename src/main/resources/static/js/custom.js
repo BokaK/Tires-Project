@@ -143,17 +143,11 @@ $(document).ready(function() {
                     stringLength: {
                         min: 2,
                         message: 'Внесете го вашето презиме!'
-                    },
-                    notEmpty: {
-                        message: 'Внесете го вашето презиме!'
                     }
                 }
             },
             email: {
                 validators: {
-                    notEmpty: {
-                        message: 'Внесете ја вашата e-mail адреса!'
-                    },
                     emailAddress: {
                         message: 'Внесете валидна e-mail адреса!'
                     }
@@ -238,8 +232,9 @@ $('#quantity').focusin(function(){
     $(this).data('oldValue', $(this).val());
 });
 
-function showDiv() {
-    $('#fill-info-warning').removeClass('invisible');
-    $('#fill-info-warning').addClass('visibility');
-}
+// function animacija() {
+//     $('html,body').animate({
+//             scrollTop: $(".help-section").offset().top},
+//         1000);
+// };
 

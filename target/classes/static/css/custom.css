@@ -51,19 +51,17 @@ p {
     text-decoration: none;
     color: #1d9b6c;
 }
-#button-cart {
+#button-order {
     color: #42DCA3;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     float: right;
     font-weight: bold;
-    margin-top: 20px;
     border-radius: 12px;
-    margin-right: -17px;
 }
-#button-cart:hover,
-#button-cart:focus {
+#button-order:hover,
+#button-order:focus {
     text-decoration: none;
     color: #1d9b6c;
     font-weight: bold;
@@ -189,7 +187,7 @@ p {
     -moz-transition: background 0.3s ease-in-out;
     transition: background 0.3s ease-in-out;
 }
-.button-cart {
+.button-order {
     width: auto;
     height: auto;
     margin-bottom: 10px;
@@ -203,18 +201,18 @@ p {
     transition: background 0.3s ease-in-out;
 }
 .button-circle:hover,
-.button-circle:focus, .button-cart:hover, .button-cart:focus  {
+.button-circle:focus, .button-order:hover, .button-order:focus  {
     outline: none;
     color: white;
     background: rgba(255, 255, 255, 0.1);
 }
-.button-circle i.animated, .button-cart{
+.button-circle i.animated, .button-order{
     -webkit-transition-property: -webkit-transform;
     -webkit-transition-duration: 1s;
     -moz-transition-property: -moz-transform;
     -moz-transition-duration: 1s;
 }
-.button-circle:hover i.animated, .button-cart:hover{
+.button-circle:hover i.animated, .button-order:hover{
     -webkit-animation-name: pulse;
     -moz-animation-name: pulse;
     -webkit-animation-duration: 1.5s;
@@ -253,6 +251,11 @@ p {
     }
 }
 
+.button-cart
+{
+    margin-top: 3px;
+    border: 1px solid #42DCA3!important;
+}
 
 
 .button {
@@ -778,3 +781,23 @@ option
 .invisible{
     visibility: hidden;
 }
+
+.button-cart:hover
+{
+    background: white !important;
+    border: 3px solid #42DCA3;
+}
+#fill-info-warning
+{
+    color: white !important;
+    font-size: 11px !important;
+    text-align: left !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.has-error .control-label, .has-error .help-block
+{
+    color: white !important;
+}
+

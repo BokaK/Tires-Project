@@ -336,14 +336,12 @@ function MainControllerFn(mainService, userService) {
             mainService.getItemsInCart(vm.cart.id).then(function (data) {
                 vm.cartItems = data;
                 vm.cartSize = vm.cartItems.length;
-                console.log(vm.cartSize);
             });
         });
     }
 
     function saveUser() {
         var promise = userService.save(vm.user);
-        console.log(vm.user);
         promise.then(successCallback, errorCallback);
         function successCallback(object) {
         }

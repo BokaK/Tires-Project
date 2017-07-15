@@ -23,6 +23,12 @@ public class Tire extends BaseEntity{
 
     private int stockNumber;
 
+    private String slipping;
+
+    private String fuel;
+
+    private int decibels;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="brandName_id")
     private Brand brandName;
@@ -149,5 +155,29 @@ public class Tire extends BaseEntity{
 
     public void setInches(Inches inches) {
         this.inches = inches;
+    }
+
+    public String getSlipping() {
+        return slipping;
+    }
+
+    public void setSlipping(String slipping) {
+        this.slipping = slipping;
+    }
+
+    public String getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
+    }
+
+    public int getDecibels() {
+        return decibels;
+    }
+
+    public void setDecibels(int decibels) {
+        this.decibels = decibels;
     }
 }

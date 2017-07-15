@@ -56,7 +56,7 @@
                 </li>
                 <li id="li-help">
                     <a class="page-scroll" href="#help"
-                       style="color: white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Купи сега!</a>
+                       style="color: white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"><i>Купи сега!</i></a>
                 </li>
                 <li id="li-contact">
                     <a class="page-scroll" href="#contact"
@@ -112,7 +112,7 @@
                         </div>
                         <div class="inch-filter">
                             <div class="div-filter-inch-name">
-                                Инчи:
+                                Дијаметар:
                             </div>
                             <div class="div-filter-inch">
                                 <select class="ddl-inch" ng-model="vm5.selectedInch"
@@ -197,7 +197,7 @@
                 </div>
                 <div class="inch-filter">
                     <div class="div-filter-inch-name">
-                        Инчи:
+                        Дијаметар:
                         <button id="unselectInch" ng-click="vm5.selectedInch = ''"><i class="fa fa-close"
                                                                                       style="font-size: 14px;"></i>
                         </button>
@@ -231,9 +231,46 @@
                     <div class="row">
                         <div class="col-lg-8" style="float: left">
                             <h1>{{e.name}}</h1>
-                            <span>{{e.description}}</span>
-                            <br/>
-                            <span>{{e.width.width}}/{{e.height.height}}/{{e.inches.inches}}</span>
+                            <p style="font-size: 13px; padding-bottom: 30px">
+                                <span ng-show="e.seasonType.seasonType == 'Летни'" style="line-height: normal; vertical-align: bottom;">
+                                    <img src="images/sun.png" style="width: 17px; height: 17px;">
+                                    <img src="images/sun-black.ico" style="width: 17px; height: 17px;">
+                                </span>
+                                <span ng-show="e.seasonType.seasonType == 'Зимски'" style="line-height: normal; vertical-align: bottom;">
+                                    <img src="images/snowflake.png" style="width: 17px; height: 17px;">
+                                    <img src="images/snowflake-black.svg" style="width: 17px; height: 17px;">
+                                </span>
+                                <span ng-show="e.seasonType.seasonType == 'Сите сезони'" style="line-height: normal; vertical-align: bottom;">
+                                    <img src="images/sun-black.ico" style="width: 17px; height: 17px;">
+                                    <img src="images/snowflake-black.svg" style="width: 17px; height: 17px;">
+                                </span>
+                                <span style="line-height: normal; vertical-align: bottom;">{{e.width.width}}/{{e.height.height}}/R{{e.inches.inches}}</span>
+                                <span style="padding-left: 80px; line-height: normal; vertical-align: bottom;">
+                                <img src="images/slipping.png" style="width: 17px; height: 17px;">
+                                {{e.slipping}}</span>
+                                <span style="line-height: normal; vertical-align: bottom;">
+                                <img src="images/fuel.png" style="width: 17px; height: 17px; ">
+                                {{e.fuel}}</span>
+                                <span style="line-height: normal; vertical-align: bottom;">
+                                <img src="images/decibels.png" style="width: 17px; height: 17px;">
+                                {{e.decibels}}</span>
+                            </p>
+
+                        </div>
+                        <div class="col-lg-4" style="float: right; padding-top: 20px; text-align: center;">
+                            <div ng-show="e.onSale">
+                                <span id="price">{{e.price}} ден.</span>
+                                <span id="priceOnSale" class="price">{{e.priceOnSale}} ден.</span>
+                            </div>
+                            <div ng-show="e.onSale == false">
+                        <span class="price">
+                            {{e.price}} ден.
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 20px;">
+                        <div class="col-lg-2">
                             <div class="input-group">
                                 <span class="input-group-btn">
                                     <button ng-click="vm5.minus()" id="button-minus" type="button" class="btn" style="background: #ffcfa3;color: white">
@@ -248,21 +285,17 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-lg-4" style="float: right; padding-top: 20px; text-align: center;">
-                            <div ng-show="e.onSale">
-                                <span id="price">{{e.price}} ден.</span>
-                                <span id="priceOnSale" class="price">{{e.priceOnSale}} ден.</span>
-                            </div>
-                            <div ng-show="e.onSale == false">
-                        <span class="price">
-                            {{e.price}} ден.
-                        </span>
-                            </div>
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-4" style="margin-left: 20px; margin-right: -20px;">
+                            <button ng-click="vm5.putInCart(e)" id="button-cart" class="btn btn-default button-cart" >Стави во кошничка <i
+                                    class="fa fa-shopping-cart" aria-hidden="true" style="color:#42DCA3;"></i></button>
                         </div>
+                        <div class="col-lg-3">
+                            <a id="button-order" class="button button-order page-scroll" href="#help">Нарачај! </a>
+                        </div>
+
                     </div>
 
-                    <button id="button-cart" class="button button-cart" ng-click="vm5.putInCart(e)">Стави во кошничка <i
-                            class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                 </div>
                 <hr style="background-color: rgba(0,0,0,0.6); height: 1px; width: 90%; margin-left: 50px">
 
@@ -325,22 +358,12 @@
             </div>
             <br/>
 
-            <div id="fill-info-warning" class="panel invisible">
-                <div class="panel-heading">
-                    <span>Вашата нарачка изнесува:</span>
-                    <h1 style="color: #42DCA3;">{{vm5.cart.totalPrice}} ден</h1>
-                </div>
-                <div class="panel-body">
-                    <span>Ве молиме потполнете ги потребните информации за контакт!</span>
-                </div>
-            </div>
-
         </div>
         <div class="col-lg-5" style="color: white; margin-left: 70px;">
             <form action="#help" ng-submit="vm5.saveUser()" class="well form-horizontal" id="contact_form">
                 <fieldset>
                     <div class="form-group" style="height: 35px;">
-                        <label class="col-md-4 control-label">Име</label>
+                        <label class="col-md-4 control-label">Име *</label>
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -379,7 +402,7 @@
                     <!-- Text input-->
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Телефонски број</label>
+                        <label class="col-md-4 control-label">Телефонски број *</label>
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
@@ -392,7 +415,7 @@
                     <!-- Text input-->
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Адреса</label>
+                        <label class="col-md-4 control-label">Адреса *</label>
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -405,7 +428,7 @@
                     <!-- Text input-->
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Град</label>
+                        <label class="col-md-4 control-label">Град *</label>
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -414,15 +437,12 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Success message -->
-                    <div class="alert alert-success" role="alert" id="success_message">Success <i
-                            class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to
-                        you shortly.
+                    <div id="fill-info-warning">
+                        <span><i>Ве молиме потполнете ги потребните информации за контакт! Полињата означени со * се задолжителни. </i></span>
                     </div>
 
                     <!-- Button -->
-                    <div class="form-group">
+                    <div class="form-group" style="margin-bottom: -6px;    margin-top: 15px;">
                         <label class="col-md-7 control-label"></label>
                         <div class="col-md-4">
                             <button type="submit" class="button button-default btn-lg" style="width: 150px;">Зачувај! <span class="glyphicon glyphicon-send"></span></button>
@@ -438,11 +458,31 @@
 <!-- Contact Section -->
 <section id="contact" class="container contact-section text-center">
     <div class="row">
-        <div class="col-lg-8">
-            <h2>Contact</h2>
-            <p>tel</p>
-            <p>mail</p>
-            <p>rabotno vreme</p>
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2 style="text-transform: none;    padding-top: 20px;">Информации за контакт</h2>
+     <div class="row" id="contact-div">
+         <div class="col-lg-4">
+             <div class="icon-div">
+                 <span class="fa fa-phone"></span>
+             </div>
+             <p><i>Тел.</i></p>
+             <p>+38975-213-231</p>
+         </div>
+         <div class="col-lg-4">
+             <div class="icon-div">
+                 <span class="fa fa-envelope" style="padding-left: 22px"></span>
+             </div>
+             <p><i>E-mail</i></p>
+             <p>example@hotmail.com</p>
+         </div>
+         <div class="col-lg-4">
+             <div class="icon-div">
+                 <span class="fa fa-clock-o"></span>
+             </div>
+             <p><i>Работно време</i></p>
+             <p>+38975-213-231</p>
+         </div>
+     </div>
         </div>
     </div>
 </section>
@@ -486,11 +526,11 @@
                     <span style="font-size: 18px">Вкупно за плаќање</span>
                 </div>
                 <div class="col-lg-4">
-                    <a class="btn btn-lg btn-default page-scroll" href="#help" data-dismiss="modal" aria-label="Close" onclick="showDiv()" style="color: darkgray">Наплати</a>
+                    <a class="btn btn-lg btn-default page-scroll" href="#help" data-dismiss="modal" aria-label="Close" style="color: darkgray">Нарачај!</a>
                 </div>
             </div>
             <div class="row" style="padding-left: 10px;padding-right: 25px;text-align: center;">
-                <span>За да продолжите со купување на кошничката одете на наплата преку копчето погоре</span>
+                <span>За да продолжите со купување на продуктите во кошничката одете на делот за нарачување преку копчето погоре!</span>
             </div>
         </div>
 
