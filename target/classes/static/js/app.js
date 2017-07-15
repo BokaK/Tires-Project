@@ -59,6 +59,11 @@ app.config(function($routeProvider){
                 controller:'inchesController',
                 controllerAs:'vm8'
             })
+        .when('/admin/orders',{
+            templateUrl: 'views/orders.html',
+            controller: 'ordersController',
+            controllerAs: 'vm9'
+        })
         .otherwise({
            redirectTo: '/'
         });
