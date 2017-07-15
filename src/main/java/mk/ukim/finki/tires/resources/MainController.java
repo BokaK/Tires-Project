@@ -139,14 +139,30 @@ public class MainController implements ApplicationContextAware {
     @RequestMapping(value = "/cartItem/{quantity}", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void insert(@Valid @RequestBody Tire tire, @PathVariable int quantity) {
-        CartItem cartItem = new CartItem();
-        cartItem.setTire(tire);
+        int flag =0;
         Cart shoppingCart = cartService.getShoppingCartInSession();
-        shoppingCart.setTotalPrice(shoppingCart.getTotalPrice() + tire.getPrice() * quantity);
-        cartService.update(shoppingCart.id, shoppingCart);
-        cartItem.setCart(shoppingCart);
-        cartItem.setQuantity(quantity);
-        cartItemService.insert(cartItem);
+        List<CartItem> items = cartItemService.findByCartId(shoppingCart.id);
+        if(items.size()>0) {
+            for (CartItem i : items) {
+                if (i.getTire().id == tire.id) {
+                    shoppingCart.setTotalPrice(shoppingCart.getTotalPrice() + tire.getPrice() * quantity);
+                    i.setQuantity(i.getQuantity() + quantity);
+                    cartService.update(shoppingCart.id, shoppingCart);
+                    cartItemService.update(i.id, i);
+                    flag =1;
+                }
+            }
+        }
+        if(flag ==0) {
+            CartItem cartItem = new CartItem();
+            cartItem.setTire(tire);
+            shoppingCart.setTotalPrice(shoppingCart.getTotalPrice() + tire.getPrice() * quantity);
+            cartService.update(shoppingCart.id, shoppingCart);
+            cartItem.setCart(shoppingCart);
+            cartItem.setQuantity(quantity);
+            cartItemService.insert(cartItem);
+        }
+
 
     }
 

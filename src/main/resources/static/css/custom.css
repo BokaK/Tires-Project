@@ -512,20 +512,20 @@ option
 }
 
 /* The Close Button */
-.close {
+.my-close {
     float: right;
-    font-size: 250px;
-    font-weight: 700;
+    font-size: 20px;
     line-height: 1;
     position: relative;
-    top: -20px;
-    right: 10px;
-
+    top: 10px;
+    right: 30px;
+    border: none;
+    background: none;
 }
 
-.close:hover,
-.close:focus {
-    color: #bbb;
+.my-close:hover,
+.my-close:focus {
+    color: white;
     text-decoration: none;
     cursor: pointer;
 }
@@ -580,26 +580,6 @@ option
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
-}
-
-
-/* The Close Button */
-.close2 {
-    float: right;
-    font-size: 70px;
-    font-weight: 700;
-    line-height: 1;
-    position: relative;
-    top: -21px;
-    right: 118px;
-
-}
-
-.close2:hover,
-.close2:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 /* 100% Image Width on Smaller Screens */
@@ -738,6 +718,32 @@ option
     font-weight: normal;
     line-height: 10px;
     background-image: linear-gradient(-179deg, #FFAE6B 0%, #EF4E20 100%);
+}
+
+.footer_shopping_cart {
+    position: fixed;
+    width: 421px;
+    background: darkgrey;
+    bottom: 0;
+    float: left;
+    z-index: 3;
+    box-shadow: 0px -6px 65px 10px rgba(0, 0, 0, 0.41);
+    display: table;
+    right: 0;
+    color: white;
+}
+
+.header_cart {
+    box-shadow: 10px 10px 15px 0px white;
+    height: 83px;
+    top: 0;
+    background: #3B3B3B;
+    color: white;
+    display: table;
+    width: 421px;
+    position: fixed;
+    z-index: 3;
+    right: 0;
 }
 /*!!!!!!!!!!!!*/
 .form-group
