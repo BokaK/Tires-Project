@@ -236,17 +236,14 @@
                             <span>{{e.width.width}}/{{e.height.height}}/{{e.inches.inches}}</span>
                             <div class="input-group">
                                 <span class="input-group-btn">
-                                    <button ng-click="vm5.minus()" id="button-minus" type="button"
-                                            class="btn btn-danger">
+                                    <button ng-click="vm5.minus()" id="button-minus" type="button" class="btn" style="background: #ffcfa3;color: white">
                                         <span class="glyphicon glyphicon-minus"></span>
                                     </button>
                                 </span>
-                                <input ng-model="vm5.quantity" type="text" id="quantity"
-                                       class="form-control input-number" value="4" min="1" max="100">
+                                <input ng-model="vm5.quantity" type="text" id="quantity" class="form-control input-number" value="4" min="1" max="100">
                                 <span class="input-group-btn">
-                                    <button ng-click="vm5.plus()" id="button-plus" type="button"+
-                                            class="btn btn-success">
-                                <span class="glyphicon glyphicon-plus"></span>
+                                    <button ng-click="vm5.plus()" id="button-plus" type="button" class="btn" style="background: #42DCA3;color: white">
+                                        <span class="glyphicon glyphicon-plus"></span>
                                     </button>
                                 </span>
                             </div>
@@ -326,7 +323,17 @@
                     </div>
                 </div>
             </div>
+            <br/>
 
+            <div id="fill-info-warning" class="panel invisible">
+                <div class="panel-heading">
+                    <span>Вашата нарачка изнесува:</span>
+                    <h1 style="color: #42DCA3;">{{vm5.cart.totalPrice}} ден</h1>
+                </div>
+                <div class="panel-body">
+                    <span>Ве молиме потполнете ги потребните информации за контакт!</span>
+                </div>
+            </div>
 
         </div>
         <div class="col-lg-5" style="color: white; margin-left: 70px;">
@@ -418,8 +425,7 @@
                     <div class="form-group">
                         <label class="col-md-7 control-label"></label>
                         <div class="col-md-4">
-                            <button type="submit" class="button button-default btn-lg" style="width: 150px;">
-                                Зачувај! <span class="glyphicon glyphicon-send"></span></button>
+                            <button type="submit" class="button button-default btn-lg" style="width: 150px;">Зачувај! <span class="glyphicon glyphicon-send"></span></button>
                         </div>
                     </div>
 
@@ -461,13 +467,13 @@
                 <div class="row panel-body">
                     <div class="col-lg-4 col-lg-offset-1">
                         <div class="input-group">
-                            <span class="input-group-btn"><button ng-click="vm5.minusCartItem(e)" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span></button></span>
+                            <span class="input-group-btn"><button ng-click="vm5.minusCartItem(e)" type="button" class="btn" style="background: #ffcfa3;color: white"><span class="glyphicon glyphicon-minus"></span></button></span>
                             <input ng-model="e.quantity" type="text" class="form-control input-number" value="4" min="1" max="100" style="">
-                            <span class="input-group-btn"><button ng-click="vm5.plusCartItem(e)" type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></button></span>
+                            <span class="input-group-btn"><button ng-click="vm5.plusCartItem(e)" type="button" class="btn" style="background: #42DCA3;color: white"><span class="glyphicon glyphicon-plus"></span></button></span>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <button class="btn btn-danger" ng-click="vm5.removeFromCart(e)">Извадете од кошничка <span class="glyphicon glyphicon-trash"></span></button>
+                        <button class="btn" ng-click="vm5.removeFromCart(e)" style="background: #ffcfa3;color: white">Извадете од кошничка <span class="glyphicon glyphicon-trash"></span></button>
                     </div>
                 </div>
             </div>
@@ -480,7 +486,7 @@
                     <span style="font-size: 18px">Вкупно за плаќање</span>
                 </div>
                 <div class="col-lg-4">
-                    <a class="btn btn-danger btn-lg page-scroll" href="#help" data-dismiss="modal" aria-label="Close">Наплати</a>
+                    <a class="btn btn-lg btn-default page-scroll" href="#help" data-dismiss="modal" aria-label="Close" onclick="showDiv()" style="color: darkgray">Наплати</a>
                 </div>
             </div>
             <div class="row" style="padding-left: 10px;padding-right: 25px;text-align: center;">

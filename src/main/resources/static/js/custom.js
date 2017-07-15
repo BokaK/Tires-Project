@@ -237,3 +237,9 @@ function plus() {
 $('#quantity').focusin(function(){
     $(this).data('oldValue', $(this).val());
 });
+
+function showDiv() {
+    $('#fill-info-warning').removeClass('invisible');
+    $('#fill-info-warning').addClass('visibility');
+}
+

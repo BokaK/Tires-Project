@@ -1,9 +1,8 @@
 package mk.ukim.finki.tires.models.jpa;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import mk.ukim.finki.tires.enums.CheckoutStatus;
+
+import javax.persistence.*;
 
 /**
  * Created by Simona on 7/9/2017.
@@ -23,6 +22,9 @@ public class Checkout extends BaseEntity{
     public Cart getCart() {
         return cart;
     }
+
+    @Enumerated(EnumType.STRING)
+    public CheckoutStatus status;
 
     public void setCart(Cart cart) {
         this.cart = cart;

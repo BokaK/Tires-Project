@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Нарачки</h1>
+        <br/>
+        <table ng-show="vm9.checkouts.length>0" class="table table-bordered table-striped">
+            <tr>
+                <th>Контакт</th>
+                <th>Информации за достава</th>
+                <th>Кошничка</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="e in vm9.entities">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button class="btn btn-xs btn-default"
+                            ng-click="vm9.edit(e)">
+                        Измени
+                    </button>
+                    <button class="btn btn-xs btn-danger"
+                            ng-click="vm9.remove(e)">
+                        Отстрани
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
