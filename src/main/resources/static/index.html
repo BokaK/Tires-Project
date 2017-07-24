@@ -234,15 +234,13 @@
                             <p style="font-size: 13px; padding-bottom: 30px">
                                 <span ng-show="e.seasonType.seasonType == 'Летни'" style="line-height: normal; vertical-align: bottom;">
                                     <img src="images/sun.png" style="width: 17px; height: 17px;">
-                                    <img src="images/sun-black.ico" style="width: 17px; height: 17px;">
                                 </span>
                                 <span ng-show="e.seasonType.seasonType == 'Зимски'" style="line-height: normal; vertical-align: bottom;">
                                     <img src="images/snowflake.png" style="width: 17px; height: 17px;">
-                                    <img src="images/snowflake-black.svg" style="width: 17px; height: 17px;">
                                 </span>
                                 <span ng-show="e.seasonType.seasonType == 'Сите сезони'" style="line-height: normal; vertical-align: bottom;">
-                                    <img src="images/sun-black.ico" style="width: 17px; height: 17px;">
-                                    <img src="images/snowflake-black.svg" style="width: 17px; height: 17px;">
+                                    <img src="images/sun.png" style="width: 17px; height: 17px;">
+                                     <img src="images/snowflake.png" style="width: 17px; height: 17px;">
                                 </span>
                                 <span style="line-height: normal; vertical-align: bottom;">{{e.width.width}}/{{e.height.height}}/R{{e.inches.inches}}</span>
                                 <span style="padding-left: 80px; line-height: normal; vertical-align: bottom;">
@@ -291,7 +289,7 @@
                                     class="fa fa-shopping-cart" aria-hidden="true" style="color:#42DCA3;"></i></button>
                         </div>
                         <div class="col-lg-3">
-                            <a id="button-order" class="button button-order page-scroll" href="#help">Нарачај! </a>
+                            <a id="button-order" class="button button-order page-scroll" href="#help" ng-click="vm5.putInCart(e)">Нарачај! </a>
                         </div>
 
                     </div>
@@ -359,8 +357,10 @@
             <br/>
 
         </div>
+
+
         <div class="col-lg-5" style="color: white; margin-left: 70px;">
-            <form action="#help" ng-submit="vm5.saveUser()" class="well form-horizontal" id="contact_form">
+            <form action="#help" class="well form-horizontal" id="contact_form">
                 <fieldset>
                     <div class="form-group" style="height: 35px;">
                         <label class="col-md-4 control-label">Име *</label>
@@ -442,17 +442,32 @@
                     </div>
 
                     <!-- Button -->
-                    <div class="form-group" style="margin-bottom: -6px;    margin-top: 15px;">
-                        <label class="col-md-7 control-label"></label>
-                        <div class="col-md-4">
-                            <button type="submit" class="button button-default btn-lg" style="width: 150px;">Зачувај! <span class="glyphicon glyphicon-send"></span></button>
-                        </div>
-                    </div>
+
+                    <button id="btnSaveUser" class="button button-default btn-lg" style="width: 150px;float: right;margin-top: 20px;margin-right: 20px" data-toggle="modal" data-target="#modalWarning" disabled="disabled">Зачувај! <span class="glyphicon glyphicon-send"></span></button>
 
                 </fieldset>
             </form>
         </div>
     </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalWarning" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Наплата</h4>
+            </div>
+            <div class="modal-body">
+                <p id="narackaCena">Вкупно за плаќање: {{vm5.cart.totalPrice}} ден</p>
+                <p id="uspesnaNaracka">{{vm5.textNaracka}}</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnCancel" type="button" class="btn btn-default" data-dismiss="modal">Откажи</button>
+                <button id="btnOrder" type="button" class="btn btn-primary"  ng-click="vm5.saveUserCheckout()" onclick="showExtra()">Нарачај</button>
+                <button style="display: none" id="btnOk" class="btn btn-default" data-dismiss="modal">Во ред</button>
+            </div>
+        </div>
     </div>
 </section>
 <!-- Contact Section -->

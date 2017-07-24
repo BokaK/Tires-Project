@@ -57,4 +57,10 @@ public class CartItemResource implements ApplicationContextAware {
         cartItemService.deleteById(id);
     }
 
+
+    @RequestMapping(value = "/cartId/{id}", method = RequestMethod.GET)
+    public List<CartItem> getByCartId(@PathVariable Long id) {
+        return cartItemService.findByCartId(id);
+    }
+
 }

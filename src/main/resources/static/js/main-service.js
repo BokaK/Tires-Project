@@ -21,7 +21,8 @@ function MainServiceFn($http, $q) {
         getCart: getCartFn,
         removeFromCart: removeFromCartFn,
         plusCartItem: plusCartItemFn,
-        minusCartItem: minusCartItemFn
+        minusCartItem: minusCartItemFn,
+        saveUserCheckout: saveUserCheckoutFn
     };
     return service;
 
@@ -188,6 +189,20 @@ function MainServiceFn($http, $q) {
                     deferred.reject(errResponse);
                 }
             );
+        return deferred.promise;
+    }
+
+    function saveUserCheckoutFn(user,cartId) {
+        var deferred = $q.defer();
+        $http.post('/checkout/'+cartId,user)
+            .then(
+            function (response) {
+                deferred.resolve(response.data);
+            },
+            function(errResponse){
+                deferred.reject(errResponse);
+            }
+        );
         return deferred.promise;
     }
 

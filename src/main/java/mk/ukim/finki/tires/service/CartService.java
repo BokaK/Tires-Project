@@ -10,7 +10,7 @@ import java.util.List;
 public interface CartService {
 
     Cart getShoppingCartInSession();
-    void updateCartInSession(Cart shoppingCart);
+    void updateCartInSession();
     List<Cart> findAll();
     Cart findById(Long id);
     void insert(Cart entity);

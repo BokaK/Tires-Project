@@ -31,25 +31,25 @@ $(function () {
 
 
 // Get the modal
-var modal = document.getElementById('myModal');
+    var modal = document.getElementById('myModal');
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById('myImg');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-    modal.style.display = "block";
-   // modalImg.src = "../images/measures1.jpg";
-    // captionText.innerHTML = this.alt;
-};
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+        modal.style.display = "block";
+        // modalImg.src = "../images/measures1.jpg";
+        // captionText.innerHTML = this.alt;
+    };
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-};
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
 
 });
 
@@ -62,33 +62,33 @@ $(function () {
 
 
 // Get the modal
-var modal = document.getElementById('myModal2');
+    var modal = document.getElementById('myModal2');
 //For the second image
-var img = document.getElementById('myImg2');
-var modalImg = document.getElementById("img02");
-var captionText = document.getElementById("caption2");
-img.onclick = function(){
-    $(".ddl-width, .ddl-height, .ddl-inch, .navbar").hide();
-    modal.style.display = "block";
-};
+    var img = document.getElementById('myImg2');
+    var modalImg = document.getElementById("img02");
+    var captionText = document.getElementById("caption2");
+    img.onclick = function(){
+        $(".ddl-width, .ddl-height, .ddl-inch, .navbar").hide();
+        modal.style.display = "block";
+    };
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close2")[0];
+    var span = document.getElementsByClassName("close2")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-    $('#tires')[0].scrollIntoView(true);
-    $(".ddl-width, .ddl-height, .ddl-inch, .navbar").show();
-};
+    span.onclick = function() {
+        modal.style.display = "none";
+        $('#tires')[0].scrollIntoView(true);
+        $(".ddl-width, .ddl-height, .ddl-inch, .navbar").show();
+    };
 
 });
 
 $(function () {
-   var pageTop = document.getElementById("btn-pageTop");
-   pageTop.onclick = function () {
-       $("select").val([]);
-   };
+    var pageTop = document.getElementById("btn-pageTop");
+    pageTop.onclick = function () {
+        $("select").val([]);
+    };
 });
 
 $(window).load(function() {
@@ -187,27 +187,32 @@ $(document).ready(function() {
                 }
             }
         }
-    })
-
+    }).on('error.field.bv', function(e, data) {
+        $('#btnSaveUser').attr('disabled',true);
+    }).on('success.field.bv', function(e, data) {
+        if(data.bv.getInvalidFields().length ==0){
+            $('#btnSaveUser').attr('disabled',false);
+        }
+    });
 });
 
 function minus() {
     var input = $('#quantity');
-  var currentVal = parseInt(input.val());
-  if (currentVal > input.attr('min'))
-  {
-      currentVal--;
-      input.val(currentVal).change();
-      if (currentVal < input.attr('max'))
-      {
-          $('#button-plus').attr('disabled', false);
-      }
+    var currentVal = parseInt(input.val());
+    if (currentVal > input.attr('min'))
+    {
+        currentVal--;
+        input.val(currentVal).change();
+        if (currentVal < input.attr('max'))
+        {
+            $('#button-plus').attr('disabled', false);
+        }
 
-  }
-  if (parseInt(input.val()) == input.attr('min'))
-  {
-      $('#button-minus').attr('disabled', true);
-  }
+    }
+    if (parseInt(input.val()) == input.attr('min'))
+    {
+        $('#button-minus').attr('disabled', true);
+    }
 
 };
 function plus() {
@@ -237,4 +242,11 @@ $('#quantity').focusin(function(){
 //             scrollTop: $(".help-section").offset().top},
 //         1000);
 // };
+
+function showExtra() {
+    $('#btnCancel').hide();
+    $('#btnOrder').hide();
+    $('#narackaCena').hide();
+    $('#btnOk').show();
+}
 

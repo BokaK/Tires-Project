@@ -42,7 +42,7 @@ public class UserResource implements ApplicationContextAware {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void insert(@Valid @RequestBody User user) {
+    public User insert(@Valid @RequestBody User user) {
 
         ContactInfo contact = new ContactInfo();
         contact.setFirstName(user.contactInfo.getFirstName());
@@ -57,7 +57,7 @@ public class UserResource implements ApplicationContextAware {
         user.deliveryInfo = delivery;
         deliveryInfoService.insert(delivery);
 
-        service.insert(user);
+        return service.insert(user);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)

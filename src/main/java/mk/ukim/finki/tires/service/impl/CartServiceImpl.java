@@ -36,7 +36,7 @@ public class CartServiceImpl implements CartService {
             Date date = new Date();
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
-            cal.add(Calendar.DAY_OF_MONTH, 2);
+            cal.add(Calendar.DAY_OF_MONTH, 1);
             date = cal.getTime();
             shoppingCart.setExpiryDate(date);
             shoppingCart.setTotalPrice(0.0);
@@ -47,7 +47,16 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void updateCartInSession(Cart shoppingCart) {
+    public void updateCartInSession() {
+        Cart shoppingCart = new Cart();
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+        date = cal.getTime();
+        shoppingCart.setExpiryDate(date);
+        shoppingCart.setTotalPrice(0.0);
+        shoppingCart = cartRepository.save(shoppingCart);
         this.httpSession.setAttribute(CART_ATTRIBUTE_NAME, shoppingCart);
     }
 

@@ -1,5 +1,6 @@
 package mk.ukim.finki.tires.resources;
 
+import mk.ukim.finki.tires.enums.CheckoutStatus;
 import mk.ukim.finki.tires.models.jpa.*;
 import mk.ukim.finki.tires.service.*;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -43,10 +44,12 @@ public class MainController implements ApplicationContextAware {
 
     private final CartService cartService;
 
+    private final CheckoutService checkoutService;
+
     @Autowired
     public MainController(TireService service, SeasonTypeService seasonTypeService, BrandService brandService,
                           WidthService widthService, HeightService heightService, InchesService inchesService,
-                          TireImageService tireImageService, CartItemService cartItemService, CartService cartService) {
+                          TireImageService tireImageService, CartItemService cartItemService, CartService cartService, CheckoutService checkoutService) {
         this.brandService = brandService;
         this.service = service;
         this.seasonTypeService = seasonTypeService;
@@ -56,6 +59,7 @@ public class MainController implements ApplicationContextAware {
         this.tireImageService = tireImageService;
         this.cartItemService = cartItemService;
         this.cartService = cartService;
+        this.checkoutService = checkoutService;
     }
 
 
@@ -199,4 +203,17 @@ public class MainController implements ApplicationContextAware {
         cartItem.setQuantity(cartItem.getQuantity()-1);
         cartItemService.update(cartItem.id,cartItem);
     }
+
+    @RequestMapping(value = "/checkout/{cartId}", method = RequestMethod.POST)
+    public void checkout(@PathVariable Long cartId, @RequestBody User user){
+        Cart cart = cartService.getShoppingCartInSession();
+        Checkout checkout = new Checkout();
+        checkout.setCart(cart);
+        checkout.setContactInfo(user.contactInfo);
+        checkout.setDeliveryInfo(user.deliveryInfo);
+        checkout.status = CheckoutStatus.ISSUED;
+        checkoutService.insert(checkout);
+        cartService.updateCartInSession();
+    }
+
 }

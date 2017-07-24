@@ -11,7 +11,7 @@ public interface UserService {
 
     List<User> findAll();
     User findById(Long id);
-    void insert(User entity);
+    User insert(User entity);
     void update(Long id,User entity);
     void deleteById(Long id);
 }

@@ -7,6 +7,7 @@ MainControllerFn.$inject = ['mainService', 'userService'];
 function MainControllerFn(mainService, userService) {
     var vm = this;
 
+    vm.textNaracka = "Дали сте сигурни дека сакате да ја извршите нарачката?";
     vm.entity = {};
     vm.entities = [];
     vm.user = {};
@@ -28,7 +29,7 @@ function MainControllerFn(mainService, userService) {
     vm.cartSize=0;
     vm.filterFunction = filterFunction;
     vm.putInCart = putInCart;
-    vm.saveUser = saveUser;
+    vm.saveUserCheckout = saveUserCheckout;
     vm.plus = plus;
     vm.minus = minus;
     vm.removeFromCart = removeFromCart;
@@ -340,13 +341,19 @@ function MainControllerFn(mainService, userService) {
         });
     }
 
-    function saveUser() {
+    function saveUserCheckout() {
         var promise = userService.save(vm.user);
         promise.then(successCallback, errorCallback);
         function successCallback(object) {
+            mainService.saveUserCheckout(object.data, vm.cart.id).then(function (data) {
+                vm.textNaracka = "Вашата нарачка беше успешна.";
+                getItemsInCart();
+            });
         }
         function errorCallback(data) {
+            vm.textNaracka = "Вашата нарачка не беше успешна. Ве молиме обидете се повторно!";
         }
+
     }
 
 
@@ -370,4 +377,5 @@ function MainControllerFn(mainService, userService) {
         }
 
     }
+
 }
