@@ -267,7 +267,7 @@ p {
     border-radius: 0;
 }
 .button-default {
-    border: 1px solid #42DCA3;
+    border: 1px solid #42DCA3 !important;
     color: #42DCA3;
     background-color: transparent;
 }
@@ -441,7 +441,6 @@ option
     display: table-cell;
     padding: 0 10px 0 0;
     vertical-align: middle;
-    width: 100px;
 }
 .div-filter-width-name, .div-filter-height-name, .div-filter-inch-name
 {
@@ -808,10 +807,8 @@ option
 {
     font-size: 70px;
     background: transparent;
-    border-radius: 60px;
     width: 117px;
     text-align: left;
-    margin-left: 85px;
     color: gray;
     border: 2px solid #42DCA3;
 }
@@ -821,3 +818,92 @@ option
     padding-top: 20px;
     padding-left: 25px;
 }
+
+.close
+{
+    position: relative !important;
+    right: 120px !important;
+    top: -15px !important;
+}
+#myBtn:focus, button:focus, a:focus, button:visited, a:visited
+{
+outline: none !important;
+}
+#myBtn:focus, #myBtn:hover
+{
+    text-decoration: none !important;
+}
+#pom
+{
+    color: rgba(0,0,0,0.6);
+    font-weight: bold;
+    font-family: Helvetica;
+}
+
+.deepshadow {
+    letter-spacing: .1em;
+    text-shadow:
+            -1px -1px 1px #111,
+            2px 2px 1px #363636;
+ }
+.gradient
+{
+    background: -webkit-linear-gradient(black, darkgray);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rowsInCart
+{
+    padding-bottom: 13px;
+    border-bottom: 1px solid rgba(1,1,1,0.2);
+    margin-top: 10px;
+}
+
+
+.hover-div{
+    margin:0 auto;
+    max-width:350px;
+    margin-top:30px;
+    position:relative;
+    overflow:hidden;
+}
+
+.icon-div{
+    width:100%;
+    transition:all ease-in-out .5s;
+}
+.view-details{
+    transition:all ease-in-out .5s;
+    top:5%;
+    left:32%;
+    position:absolute;
+
+}
+.view-details p{
+    transition:all ease-in-out .2s;
+   padding-left: 15px;
+    color:darkgray;
+}
+.view-details:hover p{
+    transition:all ease-in-out .2s;
+    padding:12px 24px;
+    color:darkgray;
+}
+
+.hover-div:hover .view-details{
+    transition:all ease-in-out .5s;
+    opacity:1;
+    color:#000;
+}
+.hover-div:hover .icon-div{
+    transition:all ease-in-out .5s;
+    opacity:.6;
+    transform: scale(1.2);
+}
+#uspesnaNaracka
+{
+    font-size: 15px;
+    display: none;
+}
+

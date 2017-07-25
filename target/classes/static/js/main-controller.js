@@ -3,10 +3,12 @@
  */
 app.controller('mainController', MainControllerFn);
 
+
 MainControllerFn.$inject = ['mainService', 'userService'];
 function MainControllerFn(mainService, userService) {
     var vm = this;
 
+    vm.textNaracka = "Дали сте сигурни дека сакате да ја извршите нарачката?";
     vm.entity = {};
     vm.entities = [];
     vm.user = {};
@@ -24,17 +26,16 @@ function MainControllerFn(mainService, userService) {
     vm.selectedInch = "";
     vm.cartItems = [];
     vm.cart = {};
-    vm.quantity = 1;
+    vm.quantity = [];
     vm.cartSize=0;
     vm.filterFunction = filterFunction;
     vm.putInCart = putInCart;
-    vm.saveUser = saveUser;
+    vm.saveUserCheckout = saveUserCheckout;
     vm.plus = plus;
     vm.minus = minus;
     vm.removeFromCart = removeFromCart;
     vm.plusCartItem = plusCartItem;
     vm.minusCartItem = minusCartItem;
-
     getItemsInCart();
     loadTires();
     loadBrands();
@@ -42,17 +43,6 @@ function MainControllerFn(mainService, userService) {
     loadWidths();
     loadHeights();
     loadInches();
-
-    function plus() {
-        vm.quantity++;
-    }
-
-    function minus() {
-        if(vm.quantity>1) {
-            vm.quantity--;
-        }else{
-        }
-    }
 
     function loadTires() {
         mainService.getAllTires().then(function (data) {
@@ -89,6 +79,45 @@ function MainControllerFn(mainService, userService) {
             vm.inches = data;
         });
     }
+    function plus(index) {
+        var input = $('#quantity');
+        var currentVal = parseInt(input.val());
+        if (currentVal < input.attr('max'))
+        {
+            currentVal++;
+            vm.quantity[index] = currentVal;
+            input.val(currentVal).change();
+            if (currentVal > input.attr('min'))
+            {
+                $('#button-minus').attr('disabled', false);
+            }
+        }
+        if (parseInt(input.val()) == input.attr('max'))
+        {
+            $('#button-plus').attr('disabled', true);
+        }
+    }
+
+    function minus(index) {
+        var input = $('#quantity');
+        var currentVal = parseInt(input.val());
+        if (currentVal > input.attr('min'))
+        {
+            currentVal--;
+            vm.quantity[index] = currentVal;
+            input.val(currentVal).change();
+            if (currentVal < input.attr('max'))
+            {
+                $('#button-plus').attr('disabled', false);
+            }
+
+        }
+        if (parseInt(input.val()) == input.attr('min'))
+        {
+            $('#button-minus').attr('disabled', true);
+        }
+    }
+
 
     function filterFunction(element) {
         if (vm.selectedBrand == "" && vm.selectedSeasonType == "" && vm.selectedInch == "" && vm.selectedHeight == "" && vm.selectedWidth == "") {
@@ -324,8 +353,8 @@ function MainControllerFn(mainService, userService) {
             }
         }
     };
-    function putInCart(entity) {
-        mainService.putInCart(entity, vm.quantity).then(function (data) {
+    function putInCart(entity,index) {
+        mainService.putInCart(entity, vm.quantity[index]).then(function (data) {
             getItemsInCart();
         });
     }
@@ -340,13 +369,19 @@ function MainControllerFn(mainService, userService) {
         });
     }
 
-    function saveUser() {
+    function saveUserCheckout() {
         var promise = userService.save(vm.user);
         promise.then(successCallback, errorCallback);
         function successCallback(object) {
+            mainService.saveUserCheckout(object.data, vm.cart.id).then(function (data) {
+                vm.textNaracka = "Вашата нарачка беше успешна.";
+                getItemsInCart();
+            });
         }
         function errorCallback(data) {
+            vm.textNaracka = "Вашата нарачка не беше успешна. Ве молиме обидете се повторно!";
         }
+
     }
 
 
@@ -370,4 +405,6 @@ function MainControllerFn(mainService, userService) {
         }
 
     }
+
+
 }

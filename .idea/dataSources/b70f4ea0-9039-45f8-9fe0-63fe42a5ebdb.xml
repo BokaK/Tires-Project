@@ -301,173 +301,186 @@
       <Position>14</Position>
       <DataType>bigint(20)|0</DataType>
     </column>
-    <index id="85" parent="20" name="FK3ag65l1ah1rs9yxymai5dn3gp">
+    <column id="85" parent="20" name="decibels">
+      <Position>15</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="20" name="fuel">
+      <Position>16</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="87" parent="20" name="slipping">
+      <Position>17</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="88" parent="20" name="FK3ag65l1ah1rs9yxymai5dn3gp">
       <ColNames>width_id</ColNames>
     </index>
-    <index id="86" parent="20" name="FK7nmcb8nhixb70bt9rf7n9rap4">
+    <index id="89" parent="20" name="FK7nmcb8nhixb70bt9rf7n9rap4">
       <ColNames>brand_name_id</ColNames>
     </index>
-    <index id="87" parent="20" name="FKbvylgifs6yfh3af17bqutk6ha">
+    <index id="90" parent="20" name="FKbvylgifs6yfh3af17bqutk6ha">
       <ColNames>vehicle_type_id</ColNames>
     </index>
-    <index id="88" parent="20" name="FKgbc8yc6k7rj3rfvi1cw9mgal1">
+    <index id="91" parent="20" name="FKgbc8yc6k7rj3rfvi1cw9mgal1">
       <ColNames>inches_id</ColNames>
     </index>
-    <index id="89" parent="20" name="FKmj59qoipg52aofeooxpixv9dh">
+    <index id="92" parent="20" name="FKmj59qoipg52aofeooxpixv9dh">
       <ColNames>season_type_id</ColNames>
     </index>
-    <index id="90" parent="20" name="FKny3in01y9kv6ahoq00asp3gjh">
+    <index id="93" parent="20" name="FKny3in01y9kv6ahoq00asp3gjh">
       <ColNames>height_id</ColNames>
     </index>
-    <key id="91" parent="20" name="PRIMARY">
+    <key id="94" parent="20" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="92" parent="20" name="FK7nmcb8nhixb70bt9rf7n9rap4">
+    <foreign-key id="95" parent="20" name="FK7nmcb8nhixb70bt9rf7n9rap4">
       <ColNames>brand_name_id</ColNames>
       <RefSchemaName>tires</RefSchemaName>
       <RefTableName>brand</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="93" parent="20" name="FKny3in01y9kv6ahoq00asp3gjh">
+    <foreign-key id="96" parent="20" name="FKny3in01y9kv6ahoq00asp3gjh">
       <ColNames>height_id</ColNames>
       <RefSchemaName>tires</RefSchemaName>
       <RefTableName>height</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="94" parent="20" name="FKgbc8yc6k7rj3rfvi1cw9mgal1">
+    <foreign-key id="97" parent="20" name="FKgbc8yc6k7rj3rfvi1cw9mgal1">
       <ColNames>inches_id</ColNames>
       <RefSchemaName>tires</RefSchemaName>
       <RefTableName>inches</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="95" parent="20" name="FKmj59qoipg52aofeooxpixv9dh">
+    <foreign-key id="98" parent="20" name="FKmj59qoipg52aofeooxpixv9dh">
       <ColNames>season_type_id</ColNames>
       <RefSchemaName>tires</RefSchemaName>
       <RefTableName>season_type</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="96" parent="20" name="FKbvylgifs6yfh3af17bqutk6ha">
+    <foreign-key id="99" parent="20" name="FKbvylgifs6yfh3af17bqutk6ha">
       <ColNames>vehicle_type_id</ColNames>
       <RefSchemaName>tires</RefSchemaName>
       <RefTableName>vehicle_type</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="97" parent="20" name="FK3ag65l1ah1rs9yxymai5dn3gp">
+    <foreign-key id="100" parent="20" name="FK3ag65l1ah1rs9yxymai5dn3gp">
       <ColNames>width_id</ColNames>
       <RefSchemaName>tires</RefSchemaName>
       <RefTableName>width</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="98" parent="21" name="id">
+    <column id="101" parent="21" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="99" parent="21" name="image_url">
+    <column id="102" parent="21" name="image_url">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="100" parent="21" name="tire_id">
+    <column id="103" parent="21" name="tire_id">
       <Position>3</Position>
       <DataType>bigint(20)|0</DataType>
     </column>
-    <index id="101" parent="21" name="FKhyd8x7tyatvblwvcajjofycyi">
+    <index id="104" parent="21" name="FKhyd8x7tyatvblwvcajjofycyi">
       <ColNames>tire_id</ColNames>
     </index>
-    <key id="102" parent="21" name="PRIMARY">
+    <key id="105" parent="21" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="103" parent="21" name="FKhyd8x7tyatvblwvcajjofycyi">
+    <foreign-key id="106" parent="21" name="FKhyd8x7tyatvblwvcajjofycyi">
       <ColNames>tire_id</ColNames>
       <RefSchemaName>tires</RefSchemaName>
       <RefTableName>tire</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="104" parent="22" name="id">
+    <column id="107" parent="22" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="105" parent="22" name="email">
+    <column id="108" parent="22" name="email">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="106" parent="22" name="password">
+    <column id="109" parent="22" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="107" parent="22" name="provider">
+    <column id="110" parent="22" name="provider">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="108" parent="22" name="type">
+    <column id="111" parent="22" name="type">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="109" parent="22" name="username">
+    <column id="112" parent="22" name="username">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="110" parent="22" name="contact_info_id">
+    <column id="113" parent="22" name="contact_info_id">
       <Position>7</Position>
       <DataType>bigint(20)|0</DataType>
     </column>
-    <column id="111" parent="22" name="delivery_info_id">
+    <column id="114" parent="22" name="delivery_info_id">
       <Position>8</Position>
       <DataType>bigint(20)|0</DataType>
     </column>
-    <index id="112" parent="22" name="FKiu81dtdbcwwminrsfgrel1pp1">
+    <index id="115" parent="22" name="FKiu81dtdbcwwminrsfgrel1pp1">
       <ColNames>delivery_info_id</ColNames>
     </index>
-    <index id="113" parent="22" name="FKnar1fux068acj0o5p9w14mtgx">
+    <index id="116" parent="22" name="FKnar1fux068acj0o5p9w14mtgx">
       <ColNames>contact_info_id</ColNames>
     </index>
-    <key id="114" parent="22" name="PRIMARY">
+    <key id="117" parent="22" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="115" parent="22" name="FKnar1fux068acj0o5p9w14mtgx">
+    <foreign-key id="118" parent="22" name="FKnar1fux068acj0o5p9w14mtgx">
       <ColNames>contact_info_id</ColNames>
       <RefSchemaName>tires</RefSchemaName>
       <RefTableName>contact_info</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="116" parent="22" name="FKiu81dtdbcwwminrsfgrel1pp1">
+    <foreign-key id="119" parent="22" name="FKiu81dtdbcwwminrsfgrel1pp1">
       <ColNames>delivery_info_id</ColNames>
       <RefSchemaName>tires</RefSchemaName>
       <RefTableName>delivery_info</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="117" parent="23" name="id">
+    <column id="120" parent="23" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="118" parent="23" name="vehicle_type">
+    <column id="121" parent="23" name="vehicle_type">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="119" parent="23" name="PRIMARY">
+    <key id="122" parent="23" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="120" parent="24" name="id">
+    <column id="123" parent="24" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="121" parent="24" name="width">
+    <column id="124" parent="24" name="width">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="122" parent="24" name="PRIMARY">
+    <key id="125" parent="24" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

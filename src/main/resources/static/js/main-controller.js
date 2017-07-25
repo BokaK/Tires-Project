@@ -3,6 +3,7 @@
  */
 app.controller('mainController', MainControllerFn);
 
+
 MainControllerFn.$inject = ['mainService', 'userService'];
 function MainControllerFn(mainService, userService) {
     var vm = this;
@@ -25,7 +26,7 @@ function MainControllerFn(mainService, userService) {
     vm.selectedInch = "";
     vm.cartItems = [];
     vm.cart = {};
-    vm.quantity = 1;
+    vm.quantity = [];
     vm.cartSize=0;
     vm.filterFunction = filterFunction;
     vm.putInCart = putInCart;
@@ -35,7 +36,6 @@ function MainControllerFn(mainService, userService) {
     vm.removeFromCart = removeFromCart;
     vm.plusCartItem = plusCartItem;
     vm.minusCartItem = minusCartItem;
-
     getItemsInCart();
     loadTires();
     loadBrands();
@@ -43,17 +43,6 @@ function MainControllerFn(mainService, userService) {
     loadWidths();
     loadHeights();
     loadInches();
-
-    function plus() {
-        vm.quantity++;
-    }
-
-    function minus() {
-        if(vm.quantity>1) {
-            vm.quantity--;
-        }else{
-        }
-    }
 
     function loadTires() {
         mainService.getAllTires().then(function (data) {
@@ -90,6 +79,45 @@ function MainControllerFn(mainService, userService) {
             vm.inches = data;
         });
     }
+    function plus(index) {
+        var input = $('#quantity');
+        var currentVal = parseInt(input.val());
+        if (currentVal < input.attr('max'))
+        {
+            currentVal++;
+            vm.quantity[index] = currentVal;
+            input.val(currentVal).change();
+            if (currentVal > input.attr('min'))
+            {
+                $('#button-minus').attr('disabled', false);
+            }
+        }
+        if (parseInt(input.val()) == input.attr('max'))
+        {
+            $('#button-plus').attr('disabled', true);
+        }
+    }
+
+    function minus(index) {
+        var input = $('#quantity');
+        var currentVal = parseInt(input.val());
+        if (currentVal > input.attr('min'))
+        {
+            currentVal--;
+            vm.quantity[index] = currentVal;
+            input.val(currentVal).change();
+            if (currentVal < input.attr('max'))
+            {
+                $('#button-plus').attr('disabled', false);
+            }
+
+        }
+        if (parseInt(input.val()) == input.attr('min'))
+        {
+            $('#button-minus').attr('disabled', true);
+        }
+    }
+
 
     function filterFunction(element) {
         if (vm.selectedBrand == "" && vm.selectedSeasonType == "" && vm.selectedInch == "" && vm.selectedHeight == "" && vm.selectedWidth == "") {
@@ -325,8 +353,8 @@ function MainControllerFn(mainService, userService) {
             }
         }
     };
-    function putInCart(entity) {
-        mainService.putInCart(entity, vm.quantity).then(function (data) {
+    function putInCart(entity,index) {
+        mainService.putInCart(entity, vm.quantity[index]).then(function (data) {
             getItemsInCart();
         });
     }
@@ -377,5 +405,6 @@ function MainControllerFn(mainService, userService) {
         }
 
     }
+
 
 }

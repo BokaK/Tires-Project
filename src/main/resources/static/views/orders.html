@@ -14,8 +14,8 @@
                 <th>Информации за достава</th>
                 <th>Кошничка</th>
                 <th>За плаќање</th>
-                <th>Статус</th>
-                <th>Промени Статус</th>
+                <!--<th>Статус</th>-->
+                <!--<th>Промени Статус</th>-->
                 <th></th>
             </tr>
             <tr ng-repeat="e in vm9.checkouts">
@@ -29,19 +29,19 @@
                 </td>
                 <td>
                     <div ng-repeat="c in vm9.cartItems" ng-show="c.cart.id==e.cart.id">
-                        <span>{{c.tire.name}}</span><br/>
-                        <span>{{c.tire.description}}</span>
+                        <span>{{c.tire.name}}</span> &nbsp; &nbsp;
+                        <span>{{c.quantity}}</span>
                         <hr style="background: darkgray;height: 1px; margin-top: 10px;margin-bottom: 10px">
                     </div>
                 </td>
                 <td>{{e.cart.totalPrice}} ден</td>
-                <td>{{e.status}}</td>
+                <!--<td>{{e.status}}</td>-->
 
-                <td>
-                    <button class="btn btn-xs btn-default" ng-click="">ISSUED</button><br/>
-                    <button class="btn btn-xs btn-success" ng-click="">PAYED</button><br/>
-                    <button class="btn btn-xs btn-warning" ng-click="">EXPIRED</button>
-                </td>
+                <!--<td>-->
+                    <!--<button class="btn btn-xs btn-default" ng-click="">ISSUED</button><br/>-->
+                    <!--<button class="btn btn-xs btn-success" ng-click="">PAYED</button><br/>-->
+                    <!--<button class="btn btn-xs btn-warning" ng-click="">EXPIRED</button>-->
+                <!--</td>-->
                 <td>
                     <button class="btn btn-xs btn-danger" ng-click="vm9.remove(e)">Отстрани</button>
                 </td>

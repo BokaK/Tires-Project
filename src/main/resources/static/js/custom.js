@@ -196,57 +196,62 @@ $(document).ready(function() {
     });
 });
 
-function minus() {
-    var input = $('#quantity');
-    var currentVal = parseInt(input.val());
-    if (currentVal > input.attr('min'))
-    {
-        currentVal--;
-        input.val(currentVal).change();
-        if (currentVal < input.attr('max'))
-        {
-            $('#button-plus').attr('disabled', false);
-        }
 
-    }
-    if (parseInt(input.val()) == input.attr('min'))
-    {
-        $('#button-minus').attr('disabled', true);
-    }
-
-};
-function plus() {
-    var input = $('#quantity');
-    var currentVal = parseInt(input.val());
-    if (currentVal < input.attr('max'))
-    {
-        currentVal++;
-        input.val(currentVal).change();
-        if (currentVal > input.attr('min'))
-        {
-            $('#button-minus').attr('disabled', false);
-        }
-    }
-    if (parseInt(input.val()) == input.attr('max'))
-    {
-        $('#button-plus').attr('disabled', true);
-    }
-
-};
 $('#quantity').focusin(function(){
     $(this).data('oldValue', $(this).val());
 });
 
-// function animacija() {
-//     $('html,body').animate({
-//             scrollTop: $(".help-section").offset().top},
-//         1000);
-// };
+function animacija() {
+    $('html,body').animate({
+            scrollTop: $(".help-section").offset().top},
+        1500, 'easeInOutExpo');
+};
 
 function showExtra() {
     $('#btnCancel').hide();
     $('#btnOrder').hide();
     $('#narackaCena').hide();
     $('#btnOk').show();
+
+    $('#narackaCena, #textNaracka').hide();
+    $('#uspesnaNaracka').fadeIn(3000);
 }
 
+function kosnicka (element) {
+    var cart = $('.shopping-cart');
+    var imgtodrag = $(element).parents('.item').find('img').eq(0);
+
+    if (imgtodrag) {
+        var nav = $('.navbar');
+        nav.css({'z-index':'-1'});
+        var imgclone = imgtodrag.clone()
+            .offset({
+                top: imgtodrag.offset().top,
+                left: imgtodrag.offset().left
+            })
+            .css({
+                'opacity': '0.5',
+                'position': 'absolute',
+                'height': '150px',
+                'width': '150px',
+                'z-index': '100'
+            })
+            .appendTo($('body'))
+            .animate({
+                'top': cart.offset().top + 10,
+                'left': cart.offset().left + 10,
+                'width': 75,
+                'height': 75
+            }, 1000, 'easeInOutExpo');
+
+
+        imgclone.animate({
+            'width': 0,
+            'height': 0
+        }, function () {
+            $(this).detach()
+        });
+    }
+    nav.css({'z-index':'1'});
+
+};
