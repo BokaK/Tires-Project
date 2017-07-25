@@ -12,7 +12,7 @@ public class SmsNotification {
     public static final String ACCOUNT_SID = "AC118dfdcbc0036205973d324fe4a2bf64";
     public static final String AUTH_TOKEN = "931b3091a7beecc6c679ddaadb5bff31";
 
-    public static void main(String[] args) {
+    public void SendNotification(){
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
         Message message = Message.creator(new PhoneNumber("+38975405830"),
