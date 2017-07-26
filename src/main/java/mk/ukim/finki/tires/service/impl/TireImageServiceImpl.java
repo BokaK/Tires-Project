@@ -21,7 +21,8 @@ import java.util.UUID;
 public class TireImageServiceImpl implements TireImageService {
 
 
-    private String URL_PATTERN = "C:/opt/tomcat/lib/Tires-Project/images/";
+    private String URL_PATTERN = "/images/";
+    //private String URL_PATTERN = "C:/opt/tomcat/lib/Tires-Project/images/";
 
     public final TireImageRepository tireImageRepository;
 
@@ -98,6 +99,7 @@ public class TireImageServiceImpl implements TireImageService {
 
     @Override
     public TireImage getByTireId(Long id) {
+
         return tireImageRepository.findByTireId(id);
     }
 

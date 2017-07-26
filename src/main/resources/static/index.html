@@ -271,13 +271,13 @@
                         <div class="col-lg-2">
                             <div class="input-group">
                                 <span class="input-group-btn">
-                                    <button  ng-click="vm5.minus($index)" id="button-minus" type="button" class="btn" style="background: #F66C37;color: white">
+                                    <button  ng-click="vm5.minus($index)" id="button-minus" type="button" class="btn button-minus" style="background: #F66C37;color: white">
                                         <span class="glyphicon glyphicon-minus"></span>
                                     </button>
                                 </span>
-                                <input ng-model="vm5.quantity[$index]" ng-init="vm5.quantity[$index] = 4" type="text" id="quantity" class="form-control input-number" value="4" min="1" max="100">
+                                <input ng-model="vm5.quantity[$index]" ng-init="vm5.quantity[$index] = 4" type="text"  class="quantity form-control input-number" value="4" min="1" max="100">
                                 <span class="input-group-btn">
-                                    <button ng-click="vm5.plus($index)" id="button-plus" type="button" class="btn" style="background: #42DCA3;color: white">
+                                    <button ng-click="vm5.plus($index)" id="button-plus" type="button" class="btn button-plus" style="background: #42DCA3;color: white">
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </button>
                                 </span>
@@ -520,8 +520,8 @@
             <button class="my-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-remove" style="color: white"></span></button>
             <p style="font-size: 25px;padding: 20px;" class="deepshadow">Вашите производи:</p>
         </div>
-        <div  style="overflow: auto;overflow-x: hidden;">
-            <div class="row rowsInCart" ng-repeat="e in vm5.cartItems">
+        <div  style="overflow: auto;overflow-x: hidden;height: 400px;width: 103%">
+            <div class="row rowsInCart" ng-repeat="e in vm5.cartItems" >
                 <div class="row panel-heading">
                     <div class="col-lg-3 col-lg-offset-1">
                         <img ng-src="/tireImage/tire/{{e.tire.id}}" style="height: 50px;width:50px" class="img img-responsive img-circle">

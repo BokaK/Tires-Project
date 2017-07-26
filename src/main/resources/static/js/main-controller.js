@@ -80,8 +80,8 @@ function MainControllerFn(mainService, userService) {
         });
     }
     function plus(index) {
-        var input = $('#quantity');
-        var currentVal = parseInt(input.val());
+        var input = $('.quantity').eq(index);
+        var currentVal = vm.quantity[index];
         if (currentVal < input.attr('max'))
         {
             currentVal++;
@@ -89,18 +89,18 @@ function MainControllerFn(mainService, userService) {
             input.val(currentVal).change();
             if (currentVal > input.attr('min'))
             {
-                $('#button-minus').attr('disabled', false);
+                $('.button-minus').eq(index).attr('disabled', false);
             }
         }
         if (parseInt(input.val()) == input.attr('max'))
         {
-            $('#button-plus').attr('disabled', true);
+            $('.button-plus').eq(index).attr('disabled', true);
         }
     }
 
     function minus(index) {
-        var input = $('#quantity');
-        var currentVal = parseInt(input.val());
+        var input = $('.quantity').eq(index);
+        var currentVal = vm.quantity[index];
         if (currentVal > input.attr('min'))
         {
             currentVal--;
@@ -108,13 +108,13 @@ function MainControllerFn(mainService, userService) {
             input.val(currentVal).change();
             if (currentVal < input.attr('max'))
             {
-                $('#button-plus').attr('disabled', false);
+                $('.button-plus').eq(index).attr('disabled', false);
             }
 
         }
         if (parseInt(input.val()) == input.attr('min'))
         {
-            $('#button-minus').attr('disabled', true);
+            $('.button-minus').eq(index).attr('disabled', true);
         }
     }
 

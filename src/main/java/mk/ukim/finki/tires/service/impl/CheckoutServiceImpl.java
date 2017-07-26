@@ -1,7 +1,7 @@
 package mk.ukim.finki.tires.service.impl;
 
-import mk.ukim.finki.tires.models.jpa.Checkout;
-import mk.ukim.finki.tires.persistence.CheckoutRepository;
+import mk.ukim.finki.tires.models.jpa.*;
+import mk.ukim.finki.tires.persistence.*;
 import mk.ukim.finki.tires.service.CheckoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,20 @@ import java.util.List;
 @Service
 public class CheckoutServiceImpl implements CheckoutService {
     private final CheckoutRepository checkoutRepository;
+    private final ContactInfoRepository contactInfoRepository;
+    private final DeliveryInfoRepository deliveryInfoRepository;
+    private final UserRepository userRepository;
+    private final CartItemRepository cartItemRepository;
+    private final CartRepository cartRepository;
 
     @Autowired
-    public CheckoutServiceImpl(CheckoutRepository checkoutRepository) {
+    public CheckoutServiceImpl(CheckoutRepository checkoutRepository, ContactInfoRepository contactInfoRepository, DeliveryInfoRepository deliveryInfoRepository, UserRepository userRepository, CartItemRepository cartItemRepository, CartRepository cartRepository) {
         this.checkoutRepository = checkoutRepository;
+        this.contactInfoRepository = contactInfoRepository;
+        this.deliveryInfoRepository = deliveryInfoRepository;
+        this.userRepository = userRepository;
+        this.cartItemRepository = cartItemRepository;
+        this.cartRepository = cartRepository;
     }
 
     @Override
@@ -42,6 +52,18 @@ public class CheckoutServiceImpl implements CheckoutService {
 
     @Override
     public void deleteById(Long id) {
+        Checkout checkout = checkoutRepository.findOne(id);
+        ContactInfo contactInfo = checkout.getContactInfo();
+        DeliveryInfo deliveryInfo = checkout.getDeliveryInfo();
+        User user = userRepository.findByContactInfo(contactInfo);
+        Cart cart = checkout.getCart();
+        List<CartItem> cartItems = cartItemRepository.findByCartId(cart.id);
+
+        userRepository.delete(user);
         checkoutRepository.delete(id);
+        contactInfoRepository.delete(contactInfo);
+        deliveryInfoRepository.delete(deliveryInfo);
+        cartItemRepository.delete(cartItems);
+        cartRepository.delete(cart);
     }
 }

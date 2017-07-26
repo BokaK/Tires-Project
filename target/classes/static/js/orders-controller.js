@@ -33,6 +33,7 @@ function OrdersControllerFn(ordersService) {
 
 
     function remove(entity) {
+
         ordersService
             .remove(entity)
             .then(function () {

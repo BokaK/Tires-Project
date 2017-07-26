@@ -12,4 +12,5 @@ import java.util.List;
 @Repository
 public interface CartItemRepository extends CrudRepository<CartItem,Long>{
     List<CartItem> findByCartId(Long id);
+    List<CartItem> findByTireId(Long id);
 }
