@@ -1,5 +1,7 @@
 package mk.ukim.finki.tires.resources;
 
+import com.twilio.type.PhoneNumber;
+import mk.ukim.finki.tires.config.SmsNotification;
 import mk.ukim.finki.tires.enums.CheckoutStatus;
 import mk.ukim.finki.tires.models.jpa.*;
 import mk.ukim.finki.tires.service.*;
@@ -214,6 +216,8 @@ public class MainController implements ApplicationContextAware {
         checkout.status = CheckoutStatus.ISSUED;
         checkoutService.insert(checkout);
         cartService.updateCartInSession();
+        //SmsNotification smsNotification = new SmsNotification();
+        //smsNotification.SendNotification(new PhoneNumber(checkout.getContactInfo().getPhone()));
     }
 
 }

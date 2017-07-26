@@ -12,12 +12,15 @@ public class SmsNotification {
     public static final String ACCOUNT_SID = "AC118dfdcbc0036205973d324fe4a2bf64";
     public static final String AUTH_TOKEN = "931b3091a7beecc6c679ddaadb5bff31";
 
-    public void SendNotification(){
+    public SmsNotification()
+    {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+    }
 
-        Message message = Message.creator(new PhoneNumber("+38975405830"),
-                new PhoneNumber("+14848123336"),
-                "This is the ship that made the Kessel Run in fourteen parsecs?").create();
+    public void SendNotification(PhoneNumber to){
+        Message message = Message.creator( to,
+                new PhoneNumber("+14848123336 "),
+                "Вашата нарачка беше успешна! За подетални информации ќе ве контактираме!").create();
 
         System.out.println(message.getSid());
     }

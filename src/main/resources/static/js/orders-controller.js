@@ -37,7 +37,13 @@ function OrdersControllerFn(ordersService) {
         ordersService
             .remove(entity)
             .then(function () {
+                clear();
                 loadCheckouts();
             });
+    }
+    function clear() {
+        vm.checkouts = [];
+        vm.checkout = {};
+        vm.cartItems = [];
     }
 }

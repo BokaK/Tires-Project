@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tires-Project</title>
+    <title>Сакам Гуми</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -360,7 +360,7 @@
 
 
         <div class="col-lg-5" style="color: white; margin-left: 70px;">
-            <form action="#help" class="well form-horizontal" id="contact_form">
+            <form action="#help" onsubmit="btnClick()" onkeypress="return event.keyCode != 13;" class="well form-horizontal" id="contact_form">
                 <fieldset>
                     <div class="form-group" style="height: 35px;">
                         <label class="col-md-4 control-label">Име *</label>
@@ -406,7 +406,7 @@
                         <div class="col-md-8 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                <input ng-model="vm5.user.contactInfo.phone" name="phone" placeholder="912-555-112"
+                                <input ng-model="vm5.user.contactInfo.phone" name="phone" placeholder="+38975123456"
                                        class="form-control" type="text">
                             </div>
                         </div>
@@ -443,7 +443,7 @@
 
                     <!-- Button -->
 
-                    <button id="btnSaveUser" class="button button-default btn-lg" style="width: 150px;float: right;margin-top: 20px;margin-right: 20px" data-toggle="modal" data-target="#modalWarning" disabled="disabled">Зачувај! <span class="glyphicon glyphicon-send"></span></button>
+                    <button  type="button" onclick="pom()" id="btnSaveUser"  class="button button-default btn-lg" style="width: 150px;float: right;margin-top: 20px;margin-right: 20px" data-toggle="modal" data-target="#modalWarning" disabled="disabled">Зачувај! <span class="glyphicon glyphicon-send"></span></button>
 
                 </fieldset>
             </form>
@@ -467,7 +467,7 @@
             <div class="modal-footer">
                 <button id="btnCancel" type="button" class="btn btn-default" data-dismiss="modal">Откажи</button>
                 <button id="btnOrder" type="button" class="btn button-default"  ng-click="vm5.saveUserCheckout()" onclick="showExtra()">Нарачај</button>
-                <button style="display: none" id="btnOk" class="btn btn-default" data-dismiss="modal">Во ред</button>
+                <button type="button"  style="display: none" id="btnOk" class="btn btn-default" data-dismiss="modal" >Во ред</button>
             </div>
         </div>
     </div>

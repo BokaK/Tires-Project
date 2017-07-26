@@ -159,8 +159,8 @@ $(document).ready(function() {
                         message: 'Внесете го вашиот телефонски број!'
                     },
                     regexp: {
-                        regexp: '^[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9]$',
-                        message: 'Внесете го вашиот телефонски број во следниот формат: 999-999-999!'
+                        regexp: '^\+[0-9]+$',
+                        message: 'Внесете го вашиот телефонски број во следниот формат: +38975123123!'
                     }
                 }
             },
@@ -215,7 +215,20 @@ function showExtra() {
 
     $('#narackaCena, #textNaracka').hide();
     $('#uspesnaNaracka').fadeIn(3000);
-}
+};
+function pom() {
+
+    $('#btnCancel').show();
+    $('#btnOrder').show();
+    $('#narackaCena').show();
+    $('#btnOk').hide();
+
+    $('#narackaCena, #textNaracka').show();
+    $('#uspesnaNaracka').hide();
+};
+
+
+
 
 function kosnicka (element) {
     var cart = $('.shopping-cart');
@@ -254,4 +267,8 @@ function kosnicka (element) {
     }
     nav.css({'z-index':'1'});
 
+};
+function btnClick() {
+    console.log("Vleguva");
+  $('#btnSaveUser').click();
 };

@@ -1,5 +1,7 @@
 package mk.ukim.finki.tires.resources;
 
+import com.twilio.type.PhoneNumber;
+import mk.ukim.finki.tires.config.SmsNotification;
 import mk.ukim.finki.tires.models.jpa.Checkout;
 import mk.ukim.finki.tires.service.CheckoutService;
 import org.springframework.beans.BeansException;
@@ -36,7 +38,9 @@ public class CheckoutResource implements ApplicationContextAware{
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void insert(@Valid @RequestBody Checkout checkout) {
+
         checkoutService.insert(checkout);
+
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
