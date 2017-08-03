@@ -231,44 +231,49 @@ function pom() {
 
 
 function kosnicka (element) {
-    var cart = $('.shopping-cart');
-    var imgtodrag = $(element).parents('.item').find('img').eq(0);
-
-    if (imgtodrag) {
-        var nav = $('.navbar');
-        nav.css({'z-index':'-1'});
-        var imgclone = imgtodrag.clone()
-            .offset({
-                top: imgtodrag.offset().top,
-                left: imgtodrag.offset().left
-            })
-            .css({
-                'opacity': '0.5',
-                'position': 'absolute',
-                'height': '150px',
-                'width': '150px',
-                'z-index': '100'
-            })
-            .appendTo($('body'))
-            .animate({
-                'top': cart.offset().top + 10,
-                'left': cart.offset().left + 10,
-                'width': 75,
-                'height': 75
-            }, 1000, 'easeInOutExpo');
 
 
-        imgclone.animate({
-            'width': 0,
-            'height': 0
-        }, function () {
-            $(this).detach()
-        });
-    }
-    nav.css({'z-index':'1'});
+    $('.shopping-cart').addClass('shaking');
 
-};
-function btnClick() {
-    console.log("Vleguva");
-  $('#btnSaveUser').click();
+    setTimeout(function() {
+        $('.shopping-cart').removeClass('shaking');
+    }, 1500);
+
+    // var cart = $('.shopping-cart');
+    // cart.effect('shake');
+    // var imgtodrag = $(element).parents('.item').find('img').eq(0);
+    //
+    // if (imgtodrag) {
+    //     var nav = $('.navbar');
+    //     nav.css({'z-index':'-1'});
+    //     var imgclone = imgtodrag.clone()
+    //         .offset({
+    //             top: imgtodrag.offset().top,
+    //             left: imgtodrag.offset().left
+    //         })
+    //         .css({
+    //             'opacity': '0.5',
+    //             'position': 'absolute',
+    //             'height': '150px',
+    //             'width': '150px',
+    //             'z-index': '100'
+    //         })
+    //         .appendTo($('body'))
+    //         .animate({
+    //             'top': cart.offset().top + 10,
+    //             'left': cart.offset().left + 10,
+    //             'width': 75,
+    //             'height': 75
+    //         }, 1000, 'easeInOutExpo');
+    //
+    //
+    //     imgclone.animate({
+    //         'width': 0,
+    //         'height': 0
+    //     }, function () {
+    //         $(this).detach()
+    //     });
+    // }
+    // nav.css({'z-index':'1'});
+
 };

@@ -281,10 +281,29 @@ p {
 ul.banner-social-buttons {
     margin-top: 0;
 }
-@media (max-width: 1199px) {
+@media (max-width: 1201px) {
     ul.banner-social-buttons {
         margin-top: 15px;
     }
+    #contact-div
+    {
+        padding-top: 0px !important;
+    }
+
+}
+@media (min-width: 1201px) {
+
+    .view-details p
+    {
+        font-size:1.2vw !important;
+    }
+}
+@media (max-width: 960px) {
+    #unselectWidth i, #unselectInch i, #unselectHeight i
+    {
+        display: none;
+    }
+
 }
 @media (max-width: 767px) {
     ul.banner-social-buttons li {
@@ -294,6 +313,14 @@ ul.banner-social-buttons {
     }
     ul.banner-social-buttons li:last-child {
         margin-bottom: 0;
+    }
+    #div-filter
+    {
+        display: none;
+    }
+    #div2
+    {
+        width: 100%;
     }
 }
 
@@ -381,7 +408,7 @@ body {
         height: 60vh;
     }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1200px) and (min-width: 767px) {
     #div2
     {
         width: 72%;
@@ -389,6 +416,38 @@ body {
     #div-filter
     {
         width: 28%;
+    }
+}
+@media (max-width: 1200px) and (min-width: 560px)
+{
+    form{
+        float: right;
+        font-size: 1.5vw;
+        width: 60%;
+    }
+    #accordion
+    {
+        float: left;
+        width: 40%;
+    }
+}
+@media(max-width: 560px)
+{
+    #accordion
+    {
+        display: none;
+    }
+    form
+    {
+        width: 90vw;
+        font-size: 2.3vw;
+        float: right;
+    }
+}
+@media (max-width: 1150px) {
+    form
+    {
+        margin-top:-20px;
     }
 }
 #div2
@@ -442,12 +501,12 @@ option
     padding: 0 10px 0 0;
     vertical-align: middle;
 }
-.div-filter-width-name, .div-filter-height-name, .div-filter-inch-name
+#tires .div-filter-width-name,#tires .div-filter-height-name,#tires .div-filter-inch-name
 {
     color: rgba(255, 255, 255, 0.78);
     line-height: 18px;
     margin-bottom: 11px;
-    font-size: 16px;
+    font-size: 1.19vw;
 }
 .div-filter-width, .div-filter-height, .div-filter-inch
 {
@@ -624,10 +683,10 @@ option
     overflow: hidden;
     height: 100%;
     background: white;
-    width: 30%;
+    width: 406px;
     top: 0;
     bottom: 0;
-    left:70%;
+    margin-left: auto;
     box-shadow: -23px 0 160px 20px rgba(0, 0, 0, 0.74);
     opacity: 1;
     -webkit-animation: moveCart 1.5s ease;
@@ -837,6 +896,7 @@ outline: none !important;
 {
     color: rgba(0,0,0,0.6);
     font-weight: bold;
+    width: 150%;
     font-family: Helvetica;
 }
 
@@ -907,3 +967,141 @@ outline: none !important;
     display: none;
 }
 
+.shaking
+{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+#div-with-btnCart
+{
+    margin-left: 20px;
+    margin-right: -20px;
+}
+@media (max-width: 1315px) and (min-width: 1215px) {
+    #div-with-btnCart
+    {
+        margin: 0;
+    }
+}
+@media (max-width: 1215px) and (min-width: 1199px) {
+
+    #div-with-btnCart
+    {
+        margin-left: -10px;
+        margin-right:10px;
+    }
+}
+@media (max-width: 1199px) {
+ #btn3
+ {
+     margin-left: 155px;
+ }
+}
+@media(max-width: 1304px) and (min-width:1140px)
+{
+    #pom1
+    {
+        width: 600px;
+        float: right;
+        margin-top: -180px;
+    }
+}
+@media (min-width: 535px) and (max-width: 1200px) {
+    #pom2
+    {
+        float: left;
+    }
+    #div-with-btnCart
+    {
+        display: inline;
+    }
+    #pom3
+    {
+        float: right;
+    }
+
+    
+}
+@media(max-width: 1140px)
+{
+    #img
+    {
+        display: block;
+        margin: auto;
+    }
+}
+@media (max-width: 534px) {
+    #pom4
+    {
+        margin: auto;
+        margin-bottom:25px;
+    }
+    #div-with-btnCart
+    {
+        float: left;
+        margin-left: -20px;
+    }
+}
+@media (max-width: 429px) {
+
+    #pom1
+    {
+        text-align: center;
+    }
+    #pom5
+    {
+        margin-right: 75px;
+    }
+    #pom6
+    {
+        padding-left: 95px;
+    }
+}
+@media (max-width: 422px) {
+
+    #cartModal
+    {
+        width: 355px;
+    }
+    .header_cart
+    {
+        width: 370px;
+    }
+    .footer_shopping_cart
+    {
+        width: 370px;
+    }
+    #pom8
+    {
+        margin-left: 73px;
+    }
+    #pom7
+    {
+        width: 40% !important;
+        margin-left: 110px !important;
+        padding-bottom: 10px;
+    }
+    #btn3
+    {
+        margin-left: 130px;
+    }
+}

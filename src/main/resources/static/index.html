@@ -18,8 +18,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
           type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript"
             src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
@@ -63,7 +63,7 @@
                        style="color: white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Контакт</a>
                 </li>
             </ul>
-            <a href="#" style="float: right; color: white"  class="shopping-cart" id="myBtn" data-toggle="modal" data-target="#cartModal">
+            <a href="#" style="float: right; color: white"  class="shopping-cart " id="myBtn" data-toggle="modal" data-target="#cartModal">
                 <i class="fa fa-shopping-cart" aria-hidden="true"
                    style="font-size: 50px;color:white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"></i>
                 <div class="badge">{{vm5.cartSize}}</div>
@@ -76,7 +76,7 @@
 </nav>
 
 <!-- Intro Header -->
-<header class="intro">
+<header class="intro" style="height: 100%">
     <div class="intro-body">
         <div class="container">
             <div class="row">
@@ -89,8 +89,8 @@
                             ng-options="x.brandName for x in vm5.brands">
                     </select>
                     <hr style="border-top: none; background-color: rgba(255,255,255,0.25); height: 1px">
-                    <div class="div3" style="padding-bottom: 20px; padding-top: 20px;">
-                        <div class="width-filter">
+                    <div class="div3 row" style="padding-bottom: 20px; padding-top: 20px;">
+                        <div class="width-filter col-lg-4">
                             <div class="div-filter-width-name">
                                 Ширина:
                             </div>
@@ -100,7 +100,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="height-filter">
+                        <div class="height-filter col-lg-4">
                             <div class="div-filter-height-name">
                                 Висина:
                             </div>
@@ -110,7 +110,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="inch-filter" style="width: 200px !important;">
+                        <div class="inch-filter col-lg-4">
                             <div class="div-filter-inch-name">
                                 Дијаметар:
                             </div>
@@ -152,18 +152,18 @@
 <section id="tires" class="container tire-section">
     <div class="row" id="row-tires">
         <div class="col-lg-3 col-lg-offset-1" id="div-filter">
-            <h3 class="deepshadow" style="color: white; opacity: 0.9;">Филтрирање на приказ:</h3>
+            <h3 class="deepshadow" style="color: white; opacity: 0.9;font-size: 1.75vw;">Филтрирање на приказ:</h3>
             <hr/>
-            <div>
-                <p style="display: inline">Сезона:</p>
+            <div style="font-size: 1vw;">
+                <p style="display: inline;font-size: 1.50vw;">Сезона:</p>
                 <button id="unselectSeasonType" ng-click="vm5.selectedSeasonType = ''"><i class="fa fa-close"></i>
                 </button>
             </div>
             <select id="ddl-seasonType" ng-model="vm5.selectedSeasonType"
                     ng-options="x.seasonType for x in vm5.seasonTypes">
             </select>
-            <div style="padding-top: 15px">
-                <p style="display: inline">Бренд на производ:</p>
+            <div style="font-size:1vw; padding-top: 15px">
+                <p style="display: inline;font-size: 1.50vw;">Бренд на производ:</p>
                 <button id="unselectBrand" ng-click="vm5.selectedBrand = ''"><i class="fa fa-close"></i></button>
             </div>
             <select class="ddl-brand" ng-model="vm5.selectedBrand" ng-options="x.brandName for x in vm5.brands"
@@ -174,7 +174,7 @@
                     <div class="div-filter-width-name">
                         Ширина:
                         <button id="unselectWidth" ng-click="vm5.selectedWidth = ''"><i class="fa fa-close"
-                                                                                        style="font-size: 14px;"></i>
+                                                                                        style="font-size: 1vw;"></i>
                         </button>
                     </div>
                     <div class="div-filter-width">
@@ -186,7 +186,7 @@
                     <div class="div-filter-height-name">
                         Висина:
                         <button id="unselectHeight" ng-click="vm5.selectedHeight = ''"><i class="fa fa-close"
-                                                                                          style="font-size: 14px;"></i>
+                                                                                          style="font-size: 1vw;"></i>
                         </button>
                     </div>
                     <div class="div-filter-height">
@@ -199,7 +199,7 @@
                     <div class="div-filter-inch-name">
                         Дијаметар:
                         <button id="unselectInch" ng-click="vm5.selectedInch = ''"><i class="fa fa-close"
-                                                                                      style="font-size: 14px;"></i>
+                                                                                      style="font-size: 1vw"></i>
                         </button>
 
                     </div>
@@ -209,10 +209,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="font-size: 11px;padding-left: 20px; padding-bottom: 15px">
+            <div class="row" style="font-size: 1vw;padding-left: 20px; padding-bottom: 15px">
                 <i>Како да ги дознаете димензиите за вашите гуми?</i>
                 <a id="myImg2" href="#" class="button button-circle page-scroll">
-                    <i class="fa fa-question animated" style="font-size: 20px;"></i>
+                    <i class="fa fa-question animated" style="font-size: 1.5vw;"></i>
                 </a>
                 <div id="myModal2" class="modal2">
                     <span class="close2 close" style="color: white; font-size:30px">&times;</span>
@@ -227,9 +227,9 @@
                     <img ng-src="/tireImage/tire/{{e.id}}" style="height: 150px;width:150px" id="img"
                          class="img img-responsive img-circle">
                 </div>
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-lg-8" style="float: left">
+                <div class="col-lg-8" id="pom1">
+                    <div class="row" style="padding-right: 30px;">
+                        <div class="col-lg-8" style="float: left" id="pom5">
                             <h1 class="gradient">{{e.name}}</h1>
                             <p style="font-size: 13px; padding-bottom: 30px" id="pom">
                                 <span ng-show="e.seasonType.seasonType == 'Летни'" style="line-height: normal; vertical-align: bottom;">
@@ -255,7 +255,7 @@
                             </p>
 
                         </div>
-                        <div class="col-lg-4" style="float: right; padding-top: 20px; text-align: center;">
+                        <div class="col-lg-4" style="float: right; padding-top: 20px; text-align: center;" id="pom5">
                             <div ng-show="e.onSale">
                                 <span id="price">{{e.price}} ден.</span>
                                 <span id="priceOnSale" class="price">{{e.priceOnSale}} ден.</span>
@@ -268,8 +268,8 @@
                         </div>
                     </div>
                     <div class="row" style="padding-top: 20px;">
-                        <div class="col-lg-2">
-                            <div class="input-group">
+                        <div class="col-lg-5" id="pom2">
+                            <div class="input-group" id="pom4">
                                 <span class="input-group-btn">
                                     <button  ng-click="vm5.minus($index)" id="button-minus" type="button" class="btn button-minus" style="background: #F66C37;color: white">
                                         <span class="glyphicon glyphicon-minus"></span>
@@ -283,12 +283,11 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-4" style="margin-left: 20px; margin-right: -20px;">
+                        <div class="col-lg-4" id="div-with-btnCart">
                             <button onclick="kosnicka(this)" ng-click="vm5.putInCart(e, $index)" id="button-cart" class="btn btn-default button-cart add-to-cart" type="button">Стави во кошничка <i
                                     class="fa fa-shopping-cart" aria-hidden="true" style="color:#42DCA3;"></i></button>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3" id="pom3">
                             <button onclick="animacija()" id="button-order" class="button button-order page-scroll" href="#help" ng-click="vm5.putInCart(e, $index)">Нарачај! </button>
                         </div>
 
@@ -502,12 +501,14 @@
              </div>
              <div class="view-details">
              <p style="margin: 0px;text-shadow:-1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey">Работно време</p>
-             <p style="margin: 0px;">+38975-213-231</p>
+             <p style="margin: 0px;">00:00</p>
              </div>
          </div>
      </div>
         </div>
     </div>
+
+
 
 
 
@@ -522,16 +523,16 @@
         </div>
         <div  style="overflow: auto;overflow-x: hidden;height: 400px;width: 103%">
             <div class="row rowsInCart" ng-repeat="e in vm5.cartItems" >
-                <div class="row panel-heading">
+                <div class="row panel-heading" style="text-align: center">
                     <div class="col-lg-3 col-lg-offset-1">
-                        <img ng-src="/tireImage/tire/{{e.tire.id}}" style="height: 50px;width:50px" class="img img-responsive img-circle">
+                        <img ng-src="/tireImage/tire/{{e.tire.id}}" style="margin:auto;height: 50px;width:50px" class="img img-responsive img-circle">
                     </div>
                     <div class="col-lg-8">
                         <h4>{{e.tire.name}}</h4>
                     </div>
                 </div>
                 <div class="row panel-body">
-                    <div class="col-lg-4 col-lg-offset-1">
+                    <div id="pom7" class="col-lg-4 col-lg-offset-1" style="float: left;width: 35%;margin-left: 35px;">
                         <div class="input-group">
                             <span class="input-group-btn"><button type="button" ng-click="vm5.minusCartItem(e)"  class="btn" style="background: #F66C37;color: white"><span class="glyphicon glyphicon-minus"></span></button></span>
                             <input ng-model="e.quantity" type="text" class="form-control input-number" value="4" min="1" max="100" style="">
@@ -539,7 +540,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <button type="button" class="btn" ng-click="vm5.removeFromCart(e)" style="background: #F66C37;color: white">Извадете од кошничка <span class="glyphicon glyphicon-trash"></span></button>
+                        <button id="pom8" type="button" class="btn" ng-click="vm5.removeFromCart(e)" style="background: #F66C37;color: white">Извадете од кошничка <span class="glyphicon glyphicon-trash"></span></button>
                     </div>
                 </div>
             </div>
@@ -553,7 +554,7 @@
 
                 </div>
                 <div class="col-lg-4">
-                    <a class="btn btn-lg btn-default page-scroll" href="#help" data-dismiss="modal" aria-label="Close" style="color: gray;border: 2px solid #42DCA3;text-shadow: 0px 1px 2px darkgrey;">Нарачај!</a>
+                    <a id="btn3" class="btn btn-lg btn-default page-scroll" href="#help" data-dismiss="modal" aria-label="Close" style="color: gray;border: 2px solid #42DCA3;text-shadow: 0px 1px 2px darkgrey;">Нарачај!</a>
                 </div>
             </div>
             <div class="row" style="padding-left: 22px;padding-right: 25px;font-size:11px; opacity:0.8; padding-bottom: 7px;">
