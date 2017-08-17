@@ -37,7 +37,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                 <i class="fa fa-bars"></i>
             </button>
-            <a style="border: none; color: white" class="navbar-brand page-scroll" href="#page-top" id="btn-pageTop">
+            <a style="border: none; color: white" class="navbar-brand page-scroll" href="#page-top" onclick="unselectValues()" id="btn-pageTop">
                 <i class="fa fa-home"
                    style="font-size: 50px; margin-top: -17px;color:white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; border: none;"></i>
             </a>
@@ -151,30 +151,30 @@
 <!-- Tires -->
 <section id="tires" class="container tire-section">
     <div class="row" id="row-tires">
-        <div class="col-lg-3 col-lg-offset-1" id="div-filter">
-            <h3 class="deepshadow" style="color: white; opacity: 0.9;font-size: 1.75vw;">Филтрирање на приказ:</h3>
+        <div class="col-lg-2 col-lg-offset-1" id="div-filter">
+            <h3 class="deepshadow" style="color: white; opacity: 0.9;font-size: 1.35vw;">Филтрирање на приказ:</h3>
             <hr/>
-            <div style="font-size: 1vw;">
-                <p style="display: inline;font-size: 1.50vw;">Сезона:</p>
+            <div style="font-size: 0.7vw;">
+                <p style="display: inline;font-size: 1.3vw;">Сезона:</p>
                 <button id="unselectSeasonType" ng-click="vm5.selectedSeasonType = ''"><i class="fa fa-close"></i>
                 </button>
             </div>
             <select id="ddl-seasonType" ng-model="vm5.selectedSeasonType"
                     ng-options="x.seasonType for x in vm5.seasonTypes">
             </select>
-            <div style="font-size:1vw; padding-top: 15px">
-                <p style="display: inline;font-size: 1.50vw;">Бренд на производ:</p>
+            <div style="font-size:0.7vw; padding-top: 15px">
+                <p style="display: inline;font-size: 1.3vw;">Бренд на производ:</p>
                 <button id="unselectBrand" ng-click="vm5.selectedBrand = ''"><i class="fa fa-close"></i></button>
             </div>
             <select class="ddl-brand" ng-model="vm5.selectedBrand" ng-options="x.brandName for x in vm5.brands"
                     style="width: 100%;">
             </select>
-            <div class="div3" style="padding-bottom: 20px;padding-top: 25px;">
-                <div class="width-filter">
+            <div class="div3">
+                <div class="width-filter" style="padding-top: 10px">
                     <div class="div-filter-width-name">
-                        Ширина:
+                       <p style="display: inline; font-size: 1.3vw">Ширина:</p>
                         <button id="unselectWidth" ng-click="vm5.selectedWidth = ''"><i class="fa fa-close"
-                                                                                        style="font-size: 1vw;"></i>
+                                                                                        style="font-size: 0.7vw;"></i>
                         </button>
                     </div>
                     <div class="div-filter-width">
@@ -184,9 +184,9 @@
                 </div>
                 <div class="height-filter">
                     <div class="div-filter-height-name">
-                        Висина:
+                       <p style="display: inline; font-size: 1.3vw">Висина:</p>
                         <button id="unselectHeight" ng-click="vm5.selectedHeight = ''"><i class="fa fa-close"
-                                                                                          style="font-size: 1vw;"></i>
+                                                                                          style="font-size: 0.7vw;"></i>
                         </button>
                     </div>
                     <div class="div-filter-height">
@@ -197,9 +197,9 @@
                 </div>
                 <div class="inch-filter">
                     <div class="div-filter-inch-name">
-                        Дијаметар:
+                       <p style="display: inline; font-size: 1.3vw">Дијаметар:</p>
                         <button id="unselectInch" ng-click="vm5.selectedInch = ''"><i class="fa fa-close"
-                                                                                      style="font-size: 1vw"></i>
+                                                                                      style="font-size: 0.7vw"></i>
                         </button>
 
                     </div>
@@ -209,7 +209,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="font-size: 1vw;padding-left: 20px; padding-bottom: 15px">
+            <div class="row" style="font-size: 0.9vw; padding-right:5px; padding-left: 20px; padding-bottom: 15px">
                 <i>Како да ги дознаете димензиите за вашите гуми?</i>
                 <a id="myImg2" href="#" class="button button-circle page-scroll">
                     <i class="fa fa-question animated" style="font-size: 1.5vw;"></i>
@@ -221,11 +221,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-8 items" id="div2" style="height: 500px;overflow: auto;">
+        <div class="col-lg-9 items" id="div2" style="height: 500px;overflow: auto;">
             <div class="row item" ng-repeat="e in vm5.entities |  filter: vm5.filterFunction track by $index " style="margin: 25px 10px;">
                 <div class="col-lg-3" style="margin-bottom: 25px">
                     <img ng-src="/tireImage/tire/{{e.id}}" style="height: 150px;width:150px" id="img"
                          class="img img-responsive img-circle">
+                    <p id="company"><i>{{e.brandName.brandName}}</i></p>
                 </div>
                 <div class="col-lg-8" id="pom1">
                     <div class="row" style="padding-right: 30px;">
@@ -242,7 +243,7 @@
                                     <img src="images/sun.png" style="width: 17px; height: 17px;">
                                      <img src="images/snowflake.png" style="width: 17px; height: 17px;">
                                 </span>
-                                <span style="line-height: normal; vertical-align: bottom;">{{e.width.width}}/{{e.height.height}}/R{{e.inches.inches}}</span>
+                                <span style="line-height: normal; vertical-align: bottom;">{{e.height.height}}/{{e.width.width}}R{{e.inches.inches}}</span>
                                 <span style="padding-left: 60px; line-height: normal; vertical-align: bottom;">
                                 <img src="images/slipping.png" style="width: 17px; height: 17px;">
                                 {{e.slipping}}</span>

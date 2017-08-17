@@ -472,7 +472,7 @@ body {
 #ddl-seasonType, .ddl-brand, .ddl-height, .ddl-width, .ddl-inch
 {
     width: 100%;
-    height: 35px;
+    height: 25px;
     background-color: transparent;
     border: solid 2px;
     border-radius: 15px;
@@ -487,26 +487,22 @@ option
 .div3
 {
     width:100%;
-    display: table;
     float: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-    font-size: 20px;
-    padding-top: 15px;
     margin-bottom: 10px;
+    padding-bottom: 15px;
 
 }
 .width-filter, .height-filter, .inch-filter
 {
-    display: table-cell;
-    padding: 0 10px 0 0;
     vertical-align: middle;
 }
 #tires .div-filter-width-name,#tires .div-filter-height-name,#tires .div-filter-inch-name
 {
     color: rgba(255, 255, 255, 0.78);
     line-height: 18px;
-    margin-bottom: 11px;
-    font-size: 1.19vw;
+    font-size: 1.3vw;
+    width: 100%;
 }
 .div-filter-width, .div-filter-height, .div-filter-inch
 {
@@ -515,6 +511,10 @@ option
     display: block;
     z-index: 9;
     float: left;
+}
+.div-filter-height, .div-filter-width
+{
+    padding-bottom: 10px;
 }
 
 /* The Modal (background) */
@@ -1016,15 +1016,7 @@ outline: none !important;
      margin-left: 155px;
  }
 }
-@media(max-width: 1304px) and (min-width:1140px)
-{
-    #pom1
-    {
-        width: 600px;
-        float: right;
-        margin-top: -180px;
-    }
-}
+
 @media (min-width: 535px) and (max-width: 1200px) {
     #pom2
     {
@@ -1104,4 +1096,10 @@ outline: none !important;
     {
         margin-left: 130px;
     }
+}
+#company
+{
+    text-align: center;
+    width: 150px;
+    opacity: 0.9;
 }

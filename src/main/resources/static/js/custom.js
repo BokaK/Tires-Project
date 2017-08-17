@@ -84,12 +84,20 @@ $(function () {
 
 });
 
-$(function () {
-    var pageTop = document.getElementById("btn-pageTop");
-    pageTop.onclick = function () {
-        $("select").val([]);
+function unselectValues() {
+
+        $('.ddl-brand').val([]);
+        $('.ddl-height').val([]);
+        $('.ddl-width').val([]);
+        $('.ddl-inch').val([]);
+        $("#unselectBrand").click();
+        $("#unselectWidth").click();
+        $("#unselectHeight").click();
+        $("#unselectSeasonType").click();
+        $("#unselectInch").click();
+
     };
-});
+
 
 $(window).load(function() {
     // Animate loader off screen

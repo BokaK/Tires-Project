@@ -245,12 +245,13 @@ function MainControllerFn(mainService, userService) {
                     if (vm.selectedHeight != "") {
                         if (vm.selectedWidth != "") {
                             if (element.width.width == vm.selectedWidth.width && element.height.height == vm.selectedHeight.height
-                                && element.inches.inches == vm.selectedInch.inches && element.brandName.brandName == vm.selectedBrand.brandName && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
+                                && element.inches.inches == vm.selectedInch.inches && element.seasonType.seasonType == vm.selectedSeasonType.seasonType) {
                                 return true;
+                            }
                             else return false;
                         }
                         else {
-                            if (element.height.height == vm.selectedHeight.height && element.inches.inches == vm.selectedInch.inches && element.brandName.brandName == vm.selectedBrand.brandName && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
+                            if (element.height.height == vm.selectedHeight.height && element.inches.inches == vm.selectedInch.inches && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
                                 return true;
                             else return false;
                         }
@@ -258,12 +259,12 @@ function MainControllerFn(mainService, userService) {
                     else {
                         if (vm.selectedWidth != "") {
                             if (element.width.width == vm.selectedWidth.width
-                                && element.inches.inches == vm.selectedInch.inches && element.brandName.brandName == vm.selectedBrand.brandName && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
+                                && element.inches.inches == vm.selectedInch.inches && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
                                 return true;
                             else return false;
                         }
                         else {
-                            if (element.inches.inches == vm.selectedInch.inches && element.brandName.brandName == vm.selectedBrand.brandName && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
+                            if (element.inches.inches == vm.selectedInch.inches && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
                                 return true;
                             else return false;
                         }
@@ -273,19 +274,19 @@ function MainControllerFn(mainService, userService) {
                     if (vm.selectedHeight != "") {
                         if (vm.selectedWidth != "") {
                             if (element.width.width == vm.selectedWidth.width && element.height.height == vm.selectedHeight.height
-                                && element.brandName.brandName == vm.selectedBrand.brandName && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
+                                && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
                                 return true;
                             else return false;
                         }
                         else {
-                            if (element.height.height == vm.selectedHeight.height && element.brandName.brandName == vm.selectedBrand.brandName && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
+                            if (element.height.height == vm.selectedHeight.height && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
                                 return true;
                             else return false;
                         }
                     }
                     else {
                         if (vm.selectedWidth != "") {
-                            if (element.width.width == vm.selectedWidth.width && element.brandName.brandName == vm.selectedBrand.brandName && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
+                            if (element.width.width == vm.selectedWidth.width && element.seasonType.seasonType == vm.selectedSeasonType.seasonType)
                                 return true;
                             else return false;
                         }
